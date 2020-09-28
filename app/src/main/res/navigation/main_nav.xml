@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/firstFragment">
+
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.university.softwaredesign_note.FirstFragment"
+        android:label="first_fragment"
+        tools:layout="@layout/first_fragment" />
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="com.university.softwaredesign_note.SecondFragment"
+        android:label="second_fragment"
+        tools:layout="@layout/second_fragment" />
+    <fragment
+        android:id="@+id/thirdFragment"
+        android:name="com.university.softwaredesign_note.ThirdFragment"
+        android:label="fragment_third"
+        tools:layout="@layout/fragment_third" />
+    <fragment
+        android:id="@+id/fourthFragment"
+        android:name="com.university.softwaredesign_note.FourthFragment"
+        android:label="fourth_fragment"
+        tools:layout="@layout/fourth_fragment" />
+</navigation>

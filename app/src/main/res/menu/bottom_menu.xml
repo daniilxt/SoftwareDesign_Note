@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/firstFragment"
+        android:icon="@drawable/bottom_nav__search" />
+    <item
+        android:id="@+id/secondFragment"
+        android:icon="@drawable/bottom_nav__add" />
+    <item
+        android:id="@+id/thirdFragment"
+        android:icon="@drawable/bottom_nav__like" />
+</menu>
