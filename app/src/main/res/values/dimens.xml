@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="big_icon_60">60dp</dimen>
+    <dimen name="half_big_icon_30">30dp</dimen>
+    <dimen name="slightly_large_icon_25">25dp</dimen>
+
+    <dimen name="spacing_gigantic_140">140dp</dimen>
+    <dimen name="spacing_pre_gigantic_115">115dp</dimen>
+    <dimen name="spacing_very_huge_85">85dp</dimen>
+    <dimen name="spacing_middle_huge_50">50dp</dimen>
+    <dimen name="spacing_huge_40">40dp</dimen>
+    <dimen name="spacing_big_30">30dp</dimen>
+    <dimen name="spacing_slightly_large_25">25dp</dimen>
+    <dimen name="spacing_large_24">24dp</dimen>
+    <dimen name="spacing_mid_20">20sp</dimen>
+    <dimen name="spacing_half_big_15">15dp</dimen>
+    <dimen name="spacing_normal_14">14dp</dimen>
+    <dimen name="spacing_half_mid_10">10sp</dimen>
+    <dimen name="spacing_double_tiny_8">8sp</dimen>
+    <dimen name="spacing_one_fourth_mid_5">5sp</dimen>
+    <dimen name="spacing_tiny_4">4sp</dimen>
+
+    <dimen name="font_huge_40">40sp</dimen>
+    <dimen name="font_mid_20">20sp</dimen>
+    <dimen name="font_massive__16">16sp</dimen>
+    <dimen name="font_normal_14">14sp</dimen>
+
+</resources>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "723638347715",
+    "firebase_url": "https://softwaredesign-note.firebaseio.com",
+    "project_id": "softwaredesign-note",
+    "storage_bucket": "softwaredesign-note.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723638347715:android:325aca95f7c6a4837bff76",
+        "android_client_info": {
+          "package_name": "com.university.softwaredesign_note"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "723638347715-fj2q7au30os2a54i7u4tru8shdjpc23u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyXsB0fnzoqNwtff7u4p4If_bSS9QiLt4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "723638347715-fj2q7au30os2a54i7u4tru8shdjpc23u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
