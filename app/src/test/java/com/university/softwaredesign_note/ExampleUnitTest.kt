@@ -1,4 +1,4 @@
-package com.fintech.softwaredesign_note
+package com.university.softwaredesign_note
 
 import org.junit.Test
 

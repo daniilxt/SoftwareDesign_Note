@@ -1,4 +1,4 @@
-package com.fintech.softwaredesign_note
+package com.university.softwaredesign_note
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
