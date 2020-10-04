@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
     <item
         android:id="@+id/firstFragment"
-        android:icon="@drawable/bottom_nav__search" />
+        android:icon="@drawable/bottom_nav__search"
+        app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/thirdFragment"
-        android:icon="@drawable/bottom_nav__like" />
+        android:icon="@drawable/bottom_nav__like"
+        app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/secondFragment"
-        android:icon="@drawable/bottom_nav__add" />
+        android:icon="@drawable/bottom_nav__add"
+        app:showAsAction=""/>
     <item
         android:id="@+id/fourthFragment"
-        android:icon="@drawable/bottom_nav__layers" />
+        android:icon="@drawable/bottom_nav__layers"
+        app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/fifthFragment"
-        android:icon="@drawable/bottom_nav__loved" />
+        android:icon="@drawable/bottom_nav__loved"
+        app:showAsAction="ifRoom"/>
 </menu>
