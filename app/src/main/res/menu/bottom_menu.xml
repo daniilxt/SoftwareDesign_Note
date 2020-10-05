@@ -5,23 +5,15 @@
 
     <item
         android:id="@+id/firstFragment"
-        android:icon="@drawable/bottom_nav__search"
-        app:showAsAction="ifRoom"/>
+        android:icon="@drawable/bottom_nav__search"/>
 
     <item
         android:id="@+id/thirdFragment"
-        android:icon="@drawable/bottom_nav__like"
-        app:showAsAction="ifRoom"/>
-    <item
-        android:id="@+id/secondFragment"
-        android:icon="@drawable/bottom_nav__add"
-        app:showAsAction=""/>
+        android:icon="@drawable/bottom_nav__like"/>
     <item
         android:id="@+id/fourthFragment"
-        android:icon="@drawable/bottom_nav__layers"
-        app:showAsAction="ifRoom"/>
+        android:icon="@drawable/bottom_nav__layers"/>
     <item
         android:id="@+id/fifthFragment"
-        android:icon="@drawable/bottom_nav__loved"
-        app:showAsAction="ifRoom"/>
+        android:icon="@drawable/bottom_nav__loved"/>
 </menu>
