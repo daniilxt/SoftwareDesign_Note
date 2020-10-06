@@ -9,12 +9,12 @@
         android:title="Search" />
 
     <item
-        android:id="@+id/thirdFragment"
+        android:id="@+id/secondFragment"
         android:icon="@drawable/bottom_nav__search_btn"/>
     <item
-        android:id="@+id/fourthFragment"
+        android:id="@+id/thirdFragment"
         android:icon="@drawable/bottom_nav__like"/>
     <item
-        android:id="@+id/fifthFragment"
+        android:id="@+id/fourthFragment"
         android:icon="@drawable/bottom_nav__loved"/>
 </menu>
