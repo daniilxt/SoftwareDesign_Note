@@ -10,11 +10,11 @@
 
     <item
         android:id="@+id/secondFragment"
-        android:icon="@drawable/bottom_nav__search_btn"/>
+        android:icon="@drawable/bottom_nav__search"/>
     <item
         android:id="@+id/thirdFragment"
         android:icon="@drawable/bottom_nav__like"/>
     <item
         android:id="@+id/fourthFragment"
-        android:icon="@drawable/bottom_nav__loved"/>
+        android:icon="@drawable/bottom_nav__history_btn"/>
 </menu>
