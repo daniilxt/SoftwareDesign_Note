@@ -21,90 +21,27 @@
         app:layout_constraintVertical_bias="0.0"
         app:navGraph="@navigation/main_nav" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="@dimen/spacing_huge_40"
-        android:clickable="true"
-        android:focusable="true"
-        android:src="@drawable/bottom_nav__add_btn"
-        app:layout_constraintBottom_toBottomOf="@+id/customBottomBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <com.university.softwaredesign_note.CustomBottomNavigationView1
+    <com.androidisland.views.ArcBottomNavigationView
         android:id="@+id/customBottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:flow_firstHorizontalStyle="packed"
-        app:itemIconSize="@dimen/slightly_large_icon_25"
+        android:background="#151E27"
+        app:ai_buttonBackgroundTint="#E91E63"
+        app:ai_buttonIcon="@drawable/bottom_nav__add_btn"
+        app:ai_buttonIconSize="32dp"
+        app:ai_buttonIconTint="#FFF"
+        app:ai_buttonRippleColor="@android:color/holo_red_dark"
+        app:ai_buttonSize="56dp"
+        app:ai_buttonStrokeColor="#E91E63"
+        app:ai_buttonStrokeWidth="0dp"
+        app:ai_selectableButton="true"
+        app:ai_state="arc"
+        app:itemRippleColor="@android:color/white"
         app:labelVisibilityMode="unlabeled"
+        app:itemIconTint="@drawable/nav_child"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/bottom_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!--
-    <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
-
-        &lt;!&ndash;    <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottomNavigationView"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:background="@android:color/holo_blue_bright"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:labelVisibilityMode="unlabeled"
-                app:itemIconSize="@dimen/half_big_icon_30"
-                app:menu="@menu/bottom_menu"/>&ndash;&gt;
-
-
-        <fragment
-            android:id="@+id/main_activity__container"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:defaultNavHost="true"
-            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:navGraph="@navigation/main_nav" />
-
-        <com.university.softwaredesign_note.CustomBottomNavigationView1
-            android:id="@+id/bottomNavigationView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:itemIconSize="@dimen/half_big_icon_30"
-            app:itemHorizontalTranslationEnabled="false"
-            app:labelVisibilityMode="unlabeled"
-            app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/bottom_menu" >
-
-        </com.university.softwaredesign_note.CustomBottomNavigationView1>
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_anchor="@id/bottomNavigationView"
-            tools:layout_editor_absoluteX="155dp"
-            tools:layout_editor_absoluteY="574dp" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>-->
