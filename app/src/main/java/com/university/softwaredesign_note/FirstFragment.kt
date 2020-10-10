@@ -1,11 +1,12 @@
 package com.university.softwaredesign_note
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 
 class FirstFragment : Fragment() {
 
@@ -13,7 +14,7 @@ class FirstFragment : Fragment() {
         fun newInstance() = FirstFragment()
     }
 
-    private lateinit var viewModel: FirstViewModel
+    private lateinit var viewModel: ViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,7 +25,7 @@ class FirstFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(FirstViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(FirstFragmentViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

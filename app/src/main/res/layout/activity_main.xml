@@ -34,7 +34,7 @@
         app:ai_buttonSize="56dp"
         app:ai_buttonStrokeColor="#E91E63"
         app:ai_buttonStrokeWidth="0dp"
-        app:ai_selectableButton="true"
+        app:ai_selectableButton="false"
         app:ai_state="arc"
         app:itemRippleColor="@android:color/white"
         app:labelVisibilityMode="unlabeled"

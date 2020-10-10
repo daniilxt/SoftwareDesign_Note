@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
@@ -33,8 +34,8 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView = findViewById(R.id.customBottomBar)
 
         val colors = intArrayOf(
-            resources.getColor(android.R.color.holo_green_dark),
-            resources.getColor(android.R.color.holo_green_dark)
+            ContextCompat.getColor(this,android.R.color.holo_green_dark),
+            ContextCompat.getColor(this,android.R.color.holo_blue_dark)
         )
         val csl = ColorStateList(arrayOf(IntArray(0)), intArrayOf(colors[0]))
 
@@ -43,8 +44,6 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
 
         bottomNavigationView.setOnNavigationItemSelectedListener {
-            // it.icon.colorFilter = PorterDuffColorFilter(Color.parseColor("#000000"), PorterDuff.Mode.SRC_ATOP)
-            //  it.icon = applicationContext.getDrawable(R.drawable.bottom_nav__add_btn)
             var screen: SupportAppScreen = FirstScreen()
             when (it.itemId) {
                 R.id.customBottomBar -> {
@@ -62,6 +61,7 @@ class MainActivity : AppCompatActivity() {
                     screen = FourthScreen()
                 }
                 else -> {
+                    it.isVisible = false
                     Toast.makeText(this, "fab", Toast.LENGTH_SHORT).show()
 
                     //updateNavigationBarState(it.itemId);
