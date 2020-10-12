@@ -3,6 +3,8 @@ package com.university.softwaredesign_note.main
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -37,10 +39,20 @@ class MainActivity : AppCompatActivity() {
         disposable = EventBus.get().subscribe { obj ->
             when (obj) {
                 Event.HIDE_BUTTON -> {
-                    bottomNavigationView.visibility = View.GONE
+                    val slideUp: Animation = AnimationUtils.loadAnimation(this, R.anim.slide_to_bot)
+
+                    if (bottomNavigationView.visibility == View.VISIBLE) {
+                        bottomNavigationView.visibility = View.GONE
+                        bottomNavigationView.startAnimation(slideUp)
+                    }
                 }
                 Event.SHOW_BUTTON -> {
-                    bottomNavigationView.visibility = View.VISIBLE
+                    val slideUp: Animation = AnimationUtils.loadAnimation(this, R.anim.slide_from_bot)
+
+                    if (bottomNavigationView.visibility == View.GONE) {
+                        bottomNavigationView.visibility = View.VISIBLE
+                        bottomNavigationView.startAnimation(slideUp)
+                    }
                 }
             }
         }
@@ -54,52 +66,24 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.main_activity__container)
         bottomNavigationView.setupWithNavController(navController)
-/*
-        bottomNavigationView.setOnNavigationItemSelectedListener {
-            var screen: SupportAppScreen = FirstScreen()
-            when (it.itemId) {
 
-                R.id.firstFragment -> {
-                    screen = FirstScreen()
-                }
-                R.id.secondFragment -> {
-                    screen = SecondScreen()
-                }
-                R.id.thirdFragment -> {
-                    screen = ThirdScreen()
-                }
-                R.id.fourthFragment -> {
-                    screen = FourthScreen()
-                }
-                else -> {
-                    //it.isVisible = false
-                    viewModel.add()
-                    Toast.makeText(this, "fab", Toast.LENGTH_SHORT).show()
-
-                    //updateNavigationBarState(it.itemId);
-                }
-            }
-            CiceroneHelper.router().replaceScreen(screen)
-            return@setOnNavigationItemSelectedListener true
-        }*/
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
 
                 R.id.firstFragment -> {
+                    viewModel.list()
                 }
                 R.id.secondFragment -> {
 
                 }
                 R.id.thirdFragment -> {
+                    viewModel.sortByLike()
                 }
                 R.id.fourthFragment -> {
                 }
                 else -> {
-                    //it.isVisible = false
                     viewModel.add()
                     Toast.makeText(this, "fab", Toast.LENGTH_SHORT).show()
-
-                    //updateNavigationBarState(it.itemId);
                 }
             }
             return@setOnNavigationItemSelectedListener true

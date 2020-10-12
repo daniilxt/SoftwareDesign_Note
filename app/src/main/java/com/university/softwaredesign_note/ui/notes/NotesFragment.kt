@@ -56,5 +56,10 @@ class NotesFragment : Fragment() {
         notes_frg__add_btn.setOnClickListener {
             viewModel.add()
         }
+        initBottomSheet()
+    }
+
+    private fun initBottomSheet() {
+
     }
 }

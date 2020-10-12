@@ -26,14 +26,15 @@
         android:background="#151E27"
         app:ai_buttonBackgroundTint="#E91E63"
         app:ai_buttonIcon="@drawable/bottom_nav__add_btn"
-        app:ai_buttonIconSize="32dp"
+        app:ai_buttonIconSize="@dimen/half_big_icon_30"
         app:ai_buttonIconTint="#FFF"
         app:ai_buttonRippleColor="@android:color/holo_red_dark"
-        app:ai_buttonSize="56dp"
+        app:ai_buttonSize="@dimen/spacing_middle_huge_50"
         app:ai_buttonStrokeColor="#E91E63"
         app:ai_buttonStrokeWidth="0dp"
         app:ai_selectableButton="true"
         app:ai_state="arc"
+        app:ai_buttonMargin="@dimen/spacing_tiny_4"
         app:itemIconTint="@drawable/nav_child"
         app:itemRippleColor="@android:color/white"
         app:labelVisibilityMode="unlabeled"
@@ -41,15 +42,5 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/bottom_menu" />
-
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_width="match_parent"
-        android:id="@+id/nav_view"
-        android:layout_height="wrap_content"
-        app:itemIconTint="@drawable/nav_child"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_menu"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
