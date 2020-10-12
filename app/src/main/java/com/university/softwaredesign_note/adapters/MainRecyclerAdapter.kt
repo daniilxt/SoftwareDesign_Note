@@ -1,6 +1,7 @@
 package com.university.softwaredesign_note.adapters
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.university.softwaredesign_note.R
@@ -61,4 +62,8 @@ class MainRecyclerAdapter(
             notifyDataSetChanged()
         }
     }
+}
+
+class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
 }

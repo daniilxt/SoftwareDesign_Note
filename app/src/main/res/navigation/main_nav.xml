@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/firstFragment"
-        android:name="com.university.softwaredesign_note.FirstFragment"
+        android:name="com.university.softwaredesign_note.ui.notes.NotesFragment"
         android:label="first_fragment"
-        tools:layout="@layout/first_fragment" />
+        tools:layout="@layout/notes_fragment" />
     <fragment
         android:id="@+id/secondFragment"
         android:name="com.university.softwaredesign_note.SecondFragment"
@@ -22,7 +22,7 @@
         tools:layout="@layout/fragment_third" />
     <fragment
         android:id="@+id/fourthFragment"
-        android:name="com.university.softwaredesign_note.FourthFragment"
+        android:name="com.university.softwaredesign_note.ui.FourthFragment"
         android:label="fourth_fragment"
         tools:layout="@layout/fourth_fragment" />
 </navigation>

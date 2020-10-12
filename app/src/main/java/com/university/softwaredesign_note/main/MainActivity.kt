@@ -1,28 +1,22 @@
-package com.university.softwaredesign_note
+package com.university.softwaredesign_note.main
 
 import android.content.res.ColorStateList
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.university.softwaredesign_note.R
 import com.university.softwaredesign_note.bus.Event
 import com.university.softwaredesign_note.bus.EventBus
 import com.university.softwaredesign_note.helper.CiceroneHelper
-import com.university.softwaredesign_note.screens.FirstScreen
-import com.university.softwaredesign_note.screens.FourthScreen
-import com.university.softwaredesign_note.screens.SecondScreen
-import com.university.softwaredesign_note.screens.ThirdScreen
+import com.university.softwaredesign_note.ui.notes.FirstFragmentViewModel
 import io.reactivex.disposables.Disposable
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
-import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 
 class MainActivity : AppCompatActivity() {
@@ -32,7 +26,8 @@ class MainActivity : AppCompatActivity() {
     private var disposable: Disposable? = null
 
     private val navigator = SupportAppNavigator(
-        this, supportFragmentManager, R.id.main_activity__container
+        this, supportFragmentManager,
+        R.id.main_activity__container
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -87,7 +82,28 @@ class MainActivity : AppCompatActivity() {
             CiceroneHelper.router().replaceScreen(screen)
             return@setOnNavigationItemSelectedListener true
         }*/
+        bottomNavigationView.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
 
+                R.id.firstFragment -> {
+                }
+                R.id.secondFragment -> {
+
+                }
+                R.id.thirdFragment -> {
+                }
+                R.id.fourthFragment -> {
+                }
+                else -> {
+                    //it.isVisible = false
+                    viewModel.add()
+                    Toast.makeText(this, "fab", Toast.LENGTH_SHORT).show()
+
+                    //updateNavigationBarState(it.itemId);
+                }
+            }
+            return@setOnNavigationItemSelectedListener true
+        }
         bottomNavigationView.itemRippleColor = csl
     }
 

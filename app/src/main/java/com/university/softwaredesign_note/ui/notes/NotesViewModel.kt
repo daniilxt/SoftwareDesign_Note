@@ -1,4 +1,4 @@
-package com.university.softwaredesign_note
+package com.university.softwaredesign_note.ui.notes
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
