@@ -31,7 +31,7 @@ class FirstFragmentViewModel : ViewModel() {
         return notes
     }
 
-    fun sortByLike() {
+    fun filterByLike() {
         tmpNotes = notes.value
         var tmp = notes.value
         if (tmp != null) {

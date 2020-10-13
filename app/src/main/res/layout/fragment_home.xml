@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/main_activity__container"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:navGraph="@navigation/main_nav" />
+    <com.androidisland.views.ArcBottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#151E27"
+        app:ai_buttonBackgroundTint="#E91E63"
+        app:ai_buttonIcon="@drawable/bottom_nav__add_btn"
+        app:ai_buttonIconSize="@dimen/half_big_icon_30"
+        app:ai_buttonIconTint="#FFF"
+        app:ai_buttonRippleColor="@android:color/holo_red_dark"
+        app:ai_buttonSize="@dimen/spacing_middle_huge_50"
+        app:ai_buttonStrokeColor="#E91E63"
+        app:ai_buttonStrokeWidth="0dp"
+        app:ai_selectableButton="true"
+        app:ai_state="arc"
+        app:ai_buttonMargin="@dimen/spacing_tiny_4"
+        app:itemIconTint="@drawable/nav_child"
+        app:itemRippleColor="@android:color/white"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

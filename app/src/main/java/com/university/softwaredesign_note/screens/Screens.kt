@@ -5,6 +5,8 @@ import com.university.softwaredesign_note.ui.notes.NotesFragment
 import com.university.softwaredesign_note.ui.FourthFragment
 import com.university.softwaredesign_note.SecondFragment
 import com.university.softwaredesign_note.ThirdFragment
+import com.university.softwaredesign_note.main.EditorFragment
+import com.university.softwaredesign_note.main.HomeFragment
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
 class FirstScreen : SupportAppScreen() {
@@ -24,8 +26,21 @@ class ThirdScreen : SupportAppScreen() {
         return ThirdFragment.newInstance()
     }
 }
+
 class FourthScreen : SupportAppScreen() {
     override fun getFragment(): Fragment? {
         return FourthFragment.newInstance()
+    }
+}
+
+class EditorScreen : SupportAppScreen() {
+    override fun getFragment(): Fragment? {
+        return EditorFragment.newInstance()
+    }
+}
+
+class HomeScreen : SupportAppScreen() {
+    override fun getFragment(): Fragment? {
+        return HomeFragment.newInstance()
     }
 }

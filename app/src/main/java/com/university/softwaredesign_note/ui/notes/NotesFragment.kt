@@ -14,7 +14,10 @@ import com.university.softwaredesign_note.adapters.MainRecyclerAdapter
 import com.university.softwaredesign_note.adapters.OnItemClickListener
 import com.university.softwaredesign_note.bus.Event
 import com.university.softwaredesign_note.bus.EventBus
+import com.university.softwaredesign_note.helper.CiceroneHelper
+import com.university.softwaredesign_note.screens.EditorScreen
 import kotlinx.android.synthetic.main.notes_fragment.*
+import kotlinx.android.synthetic.main.notes_fragment.view.*
 
 class NotesFragment : Fragment() {
     private lateinit var itemAdapter: MainRecyclerAdapter
@@ -43,14 +46,15 @@ class NotesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        notes_frg__recycler.layoutManager = LinearLayoutManager(requireContext())
+        requireView().notes_frg__recycler.layoutManager = LinearLayoutManager(requireContext())
         itemAdapter = MainRecyclerAdapter(object : OnItemClickListener {
             override fun onItemClicked(position: Int, item: Any) {
+                CiceroneHelper.router().navigateTo(EditorScreen())
                 Toast.makeText(requireContext(), "Item is $position", Toast.LENGTH_SHORT).show()
             }
         })
-        notes_frg__recycler.adapter = itemAdapter
-        notes_frg__recycler.setOnScrollChangeListener { _, _, _, _, oldScrollY ->
+        requireView().notes_frg__recycler.adapter = itemAdapter
+        requireView().notes_frg__recycler.setOnScrollChangeListener { _, _, _, _, oldScrollY ->
             if (oldScrollY < 0) EventBus.send(Event.HIDE_BUTTON) else EventBus.send(Event.SHOW_BUTTON)
         }
         notes_frg__add_btn.setOnClickListener {
