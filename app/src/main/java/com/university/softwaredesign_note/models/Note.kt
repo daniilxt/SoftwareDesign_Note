@@ -5,4 +5,4 @@ import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 @Parcelize
-data class Note(val noteText:String, val liked:Boolean) : Parcelable
+data class Note(val noteText:String, var liked:Boolean) : Parcelable

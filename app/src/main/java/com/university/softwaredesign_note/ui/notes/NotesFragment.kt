@@ -59,6 +59,7 @@ class NotesFragment : Fragment() {
         }, object : OnItemClickListener {
             override fun onItemClicked(position: Int, item: Any) {
                 Toast.makeText(requireContext(), "Item liked  $position", Toast.LENGTH_SHORT).show()
+                viewModel.changeLikeState(position)
 
             }
         })

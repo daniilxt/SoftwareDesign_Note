@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.university.softwaredesign_note.models.Note
 import timber.log.Timber
+import java.text.FieldPosition
 import java.util.stream.Collectors
 
 class FirstFragmentViewModel : ViewModel() {
@@ -34,6 +35,13 @@ class FirstFragmentViewModel : ViewModel() {
         return notes
     }
 
+    fun changeLikeState(position: Int){
+        val tmp = notes.value?.get(position)
+        if (tmp != null) {
+            tmp.liked = !tmp.liked
+            notes.value?.set(position,tmp)
+        }
+    }
     fun filterByLike() {
         tmpNotes = notes.value
         var tmp = notes.value
