@@ -5,7 +5,7 @@
     android:id="@+id/item__card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/spacing_tiny_4"
+    android:layout_margin="@dimen/spacing_double_tiny_8"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?selectableItemBackground"
@@ -23,10 +23,11 @@
             android:layout_height="@dimen/half_big_icon_30"
             android:layout_centerVertical="true"
             android:layout_margin="@dimen/spacing_half_mid_10"
-            tools:src="@drawable/ic_edit"
-            android:src="@drawable/ic_edit" />
+            android:src="@drawable/ic_edit"
+            tools:src="@drawable/ic_edit" />
 
         <LinearLayout
+            android:id="@+id/linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/item__card_image"
@@ -38,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_half_mid_10"
-                android:text=""
+                android:text="Title"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/spacing_mid_20" />
 
@@ -47,11 +48,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_half_mid_10"
-                tools:text="There is description about people"
                 android:textColor="@android:color/black"
-                android:textSize="@dimen/spacing_mid_20" />
+                android:textSize="@dimen/spacing_mid_20"
+                tools:text="There is description about people" />
+
+            <ImageButton
+                android:id="@+id/item__card_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginStart="@dimen/spacing_half_mid_10"
+                android:background="@android:color/transparent"
+                android:src="@drawable/bottom_nav__like"
+                android:tintMode="multiply" />
 
         </LinearLayout>
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

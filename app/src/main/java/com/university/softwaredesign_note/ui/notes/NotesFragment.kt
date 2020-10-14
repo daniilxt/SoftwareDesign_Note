@@ -56,6 +56,11 @@ class NotesFragment : Fragment() {
                 CiceroneHelper.router().navigateTo(EditorScreen())
                 Toast.makeText(requireContext(), "Item is $position", Toast.LENGTH_SHORT).show()
             }
+        }, object : OnItemClickListener {
+            override fun onItemClicked(position: Int, item: Any) {
+                Toast.makeText(requireContext(), "Item liked  $position", Toast.LENGTH_SHORT).show()
+
+            }
         })
         requireView().notes_frg__recycler.adapter = itemAdapter
         requireView().notes_frg__recycler.setOnScrollChangeListener { _, _, _, _, oldScrollY ->
