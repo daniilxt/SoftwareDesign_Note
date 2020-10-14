@@ -30,7 +30,7 @@ class MainRecyclerAdapter(
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
         val item = titles[position]
 
-        holder.itemView.item__card_title.text = "Title"
+        holder.itemView.item__card_title.text = "Title $position"
         holder.itemView.item__card_description.text = "Description"
         val type = when (position) {
             in 1..2 -> {

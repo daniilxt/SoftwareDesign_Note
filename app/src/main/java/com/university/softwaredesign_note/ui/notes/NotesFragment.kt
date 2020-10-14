@@ -18,6 +18,7 @@ import com.university.softwaredesign_note.helper.CiceroneHelper
 import com.university.softwaredesign_note.screens.EditorScreen
 import kotlinx.android.synthetic.main.notes_fragment.*
 import kotlinx.android.synthetic.main.notes_fragment.view.*
+import timber.log.Timber
 
 class NotesFragment : Fragment() {
     private lateinit var itemAdapter: MainRecyclerAdapter
@@ -30,22 +31,25 @@ class NotesFragment : Fragment() {
     private lateinit var viewModel: FirstFragmentViewModel
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        Timber.i("ON ACTIVITY CREATED CREATED")
         viewModel = ViewModelProvider(requireActivity()).get(FirstFragmentViewModel::class.java)
         viewModel.getNotes().observe(viewLifecycleOwner, Observer {
             itemAdapter.bind(it)
         })
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Timber.i("ON CREATEVIEW CREATED")
         return inflater.inflate(R.layout.notes_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Timber.i("ON VIEW CREATED")
+
         requireView().notes_frg__recycler.layoutManager = LinearLayoutManager(requireContext())
         itemAdapter = MainRecyclerAdapter(object : OnItemClickListener {
             override fun onItemClicked(position: Int, item: Any) {

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.university.softwaredesign_note.models.Note
+import timber.log.Timber
 import java.util.stream.Collectors
 
 class FirstFragmentViewModel : ViewModel() {
@@ -11,14 +12,15 @@ class FirstFragmentViewModel : ViewModel() {
     private var tmpNotes = notes.value
 
     init {
-        notes = MutableLiveData()
+        /*notes = MutableLiveData()*/
         notes.postValue(
             arrayListOf(
                 Note("helo", false),
-                Note("wrld", false), Note
-                    ("test", false)
+                Note("wrld", false),
+                Note("test", false)
             )
         )
+        Timber.i("ON VIEWMODEL INIT $notes")
     }
 
     fun add() {
@@ -28,6 +30,7 @@ class FirstFragmentViewModel : ViewModel() {
     }
 
     fun getNotes(): LiveData<ArrayList<Note>> {
+        tmpNotes = notes.value
         return notes
     }
 

@@ -20,6 +20,7 @@ import com.university.softwaredesign_note.bus.EventBus
 import com.university.softwaredesign_note.ui.notes.FirstFragmentViewModel
 import com.university.softwaredesign_note.ui.notes.NotesFragment
 import io.reactivex.disposables.Disposable
+import timber.log.Timber
 
 class HomeFragment : Fragment() {
     companion object {
@@ -29,6 +30,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var bottomNavigationView: BottomNavigationView
     private lateinit var viewModel: FirstFragmentViewModel
+    private var stateNavigation: Int = R.id.firstFragment
 
     private var disposable: Disposable? = null
 
@@ -36,6 +38,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Timber.i("ON CREATE VIEW")
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
@@ -43,6 +46,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViewModel()
+        Timber.i("ON VIEW CREATED")
         disposable = EventBus.get().subscribe { obj ->
             when (obj) {
                 Event.HIDE_BUTTON -> {
@@ -76,16 +80,23 @@ class HomeFragment : Fragment() {
         bottomNavigationView.setupWithNavController(navController)
 
         bottomNavigationView.setOnNavigationItemSelectedListener {
+
             when (it.itemId) {
 
                 R.id.firstFragment -> {
-                    viewModel.list()
+                    if (stateNavigation != R.id.firstFragment) {
+                        viewModel.list()
+                        stateNavigation = R.id.firstFragment
+                    }
                 }
                 R.id.secondFragment -> {
 
                 }
                 R.id.thirdFragment -> {
-                    viewModel.filterByLike()
+                    if (stateNavigation != R.id.secondFragment) {
+                        viewModel.filterByLike()
+                        stateNavigation = R.id.secondFragment
+                    }
                 }
                 R.id.fourthFragment -> {
                 }
@@ -101,6 +112,7 @@ class HomeFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
+        Timber.i("ON  DESTROYED")
         if (disposable?.isDisposed == false) {
             disposable?.dispose()
         }

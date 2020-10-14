@@ -6,6 +6,7 @@ import com.university.softwaredesign_note.R
 import com.university.softwaredesign_note.helper.CiceroneHelper
 import com.university.softwaredesign_note.screens.HomeScreen
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
+import timber.log.Timber
 
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +19,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Timber.i("ON CREATE")
+
         initFragment()
     }
 
@@ -27,11 +30,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        Timber.i("ON RESUME")
         CiceroneHelper.navHolder().setNavigator(navigator)
     }
 
     override fun onPause() {
         super.onPause()
+        Timber.i("ON PAUSE")
         CiceroneHelper.navHolder().removeNavigator()
     }
 }
