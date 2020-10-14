@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.university.softwaredesign_note.R
+import com.university.softwaredesign_note.extensions.setCustomOnClickListener
 import com.university.softwaredesign_note.models.Note
 import kotlinx.android.synthetic.main.item_note.view.*
 
@@ -35,10 +36,16 @@ class MainRecyclerAdapter(
 
         holder.itemView.item__card_title.text = "Title $position"
         holder.itemView.item__card_description.text = "Description"
-        holder.itemView.item__card_like.setOnClickListener {
-            onItemLikeClickListener.onItemClicked(position, item)
+
+        holder.itemView.item__card_like.setCustomOnClickListener({
             holder.itemView.item__card_like.setBackgroundResource(R.drawable.bottom_nav__like_filled)
-        }
+            onItemLikeClickListener.onItemClicked(position, item)
+
+        }, {
+            holder.itemView.item__card_like.setBackgroundResource(R.drawable.bottom_nav__like)
+            onItemLikeClickListener.onItemClicked(position, item)
+
+        })
         val type = when (position) {
             in 1..2 -> {
                 R.drawable.ic_edit
