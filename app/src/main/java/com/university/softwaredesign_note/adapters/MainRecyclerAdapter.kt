@@ -34,7 +34,7 @@ class MainRecyclerAdapter(
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
         val item = titles[position]
 
-        holder.itemView.item__card_title.text = "Title $position"
+        holder.itemView.item__card_title.text = item.noteText
         holder.itemView.item__card_description.text = "Description"
 
         holder.itemView.item__card_like.setCustomOnClickListener({

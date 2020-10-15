@@ -21,6 +21,7 @@ import com.university.softwaredesign_note.ui.notes.FirstFragmentViewModel
 import com.university.softwaredesign_note.ui.notes.NotesFragment
 import io.reactivex.disposables.Disposable
 import timber.log.Timber
+import java.lang.Exception
 
 class HomeFragment : Fragment() {
     companion object {
@@ -50,21 +51,33 @@ class HomeFragment : Fragment() {
         disposable = EventBus.get().subscribe { obj ->
             when (obj) {
                 Event.HIDE_BUTTON -> {
-                    val slideUp: Animation =
-                        AnimationUtils.loadAnimation(this.requireContext(), R.anim.slide_to_bot)
+                    try {
+                        val slideUp: Animation =
+                            AnimationUtils.loadAnimation(this.requireContext(), R.anim.slide_to_bot)
 
-                    if (bottomNavigationView.visibility == View.VISIBLE) {
-                        bottomNavigationView.visibility = View.GONE
-                        bottomNavigationView.startAnimation(slideUp)
+                        if (bottomNavigationView.visibility == View.VISIBLE) {
+                            bottomNavigationView.visibility = View.GONE
+                            bottomNavigationView.startAnimation(slideUp)
+                        }
+                    } catch (e: Exception) {
+                        Timber.i("Exception $e")
                     }
                 }
                 Event.SHOW_BUTTON -> {
-                    val slideUp: Animation =
-                        AnimationUtils.loadAnimation(this.requireContext(), R.anim.slide_from_bot)
+                    try {
 
-                    if (bottomNavigationView.visibility == View.GONE) {
-                        bottomNavigationView.visibility = View.VISIBLE
-                        bottomNavigationView.startAnimation(slideUp)
+                        val slideUp: Animation =
+                            AnimationUtils.loadAnimation(
+                                this.requireContext(),
+                                R.anim.slide_from_bot
+                            )
+
+                        if (bottomNavigationView.visibility == View.GONE) {
+                            bottomNavigationView.visibility = View.VISIBLE
+                            bottomNavigationView.startAnimation(slideUp)
+                        }
+                    } catch (e: Exception) {
+                        Timber.i("Exception $e")
                     }
                 }
             }

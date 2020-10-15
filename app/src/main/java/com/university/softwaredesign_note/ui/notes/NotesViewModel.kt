@@ -16,9 +16,9 @@ class FirstFragmentViewModel : ViewModel() {
         /*notes = MutableLiveData()*/
         notes.postValue(
             arrayListOf(
-                Note("helo", false),
-                Note("wrld", false),
-                Note("test", false)
+                Note("Hello", false),
+                Note("World", false),
+                Note("XT", false)
             )
         )
         Timber.i("ON VIEWMODEL INIT $notes")
