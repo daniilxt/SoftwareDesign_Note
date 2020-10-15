@@ -1,16 +1,13 @@
 package com.university.softwaredesign_note.adapters
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.university.softwaredesign_note.R
 import com.university.softwaredesign_note.extensions.setCustomOnClickListener
 import com.university.softwaredesign_note.models.Note
 import kotlinx.android.synthetic.main.item_note.view.*
-
 import timber.log.Timber
 
 class MainRecyclerAdapter(
@@ -36,16 +33,17 @@ class MainRecyclerAdapter(
 
         holder.itemView.item__card_title.text = item.noteText
         holder.itemView.item__card_description.text = "Description"
-
+/*
         holder.itemView.item__card_like.setCustomOnClickListener({
             holder.itemView.item__card_like.setBackgroundResource(R.drawable.bottom_nav__like_filled)
             onItemLikeClickListener.onItemClicked(position, item)
 
-        }, {
+        }) {
             holder.itemView.item__card_like.setBackgroundResource(R.drawable.bottom_nav__like)
+            holder.itemView.item__card_like.tag = "unClicked"
             onItemLikeClickListener.onItemClicked(position, item)
 
-        })
+        }*/
         val type = when (position) {
             in 1..2 -> {
                 R.drawable.ic_edit
@@ -62,7 +60,18 @@ class MainRecyclerAdapter(
         when (item.liked) {
             true -> {
                 holder.itemView.item__card_like.setBackgroundResource(R.drawable.bottom_nav__like_filled)
+                holder.itemView.item__card_like.tag = "liked"
             }
+        }
+        holder.itemView.item__card_like.setOnClickListener {
+            onItemLikeClickListener.onItemClicked(position, item)
+            if (holder.itemView.item__card_like.tag == "liked") {
+                holder.itemView.item__card_like.setBackgroundResource(R.drawable.bottom_nav__like)
+                holder.itemView.item__card_like.tag = "unlicked"
+                return@setOnClickListener
+            }
+            holder.itemView.item__card_like.setBackgroundResource(R.drawable.bottom_nav__like_filled)
+            holder.itemView.item__card_like.tag = "liked"
         }
         holder.itemView.setOnClickListener {
             onItemClickListener.onItemClicked(position, item)

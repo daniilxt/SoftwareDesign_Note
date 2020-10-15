@@ -5,65 +5,110 @@
     android:id="@+id/item__card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/spacing_double_tiny_8"
+    android:layout_marginHorizontal="@dimen/spacing_double_tiny_8"
+    android:layout_marginTop="@dimen/spacing_double_tiny_8"
+    android:layout_marginBottom="@dimen/spacing_tiny_4"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?selectableItemBackground"
     app:cardCornerRadius="@dimen/spacing_half_mid_10">
+    <!--        <RelativeLayout
+                android:id="@+id/item__card_wrapper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/spacing_mid_20">
 
-    <RelativeLayout
+                <ImageView
+                    android:id="@+id/item__card_image"
+                    android:layout_width="@dimen/half_big_icon_30"
+                    android:layout_height="@dimen/half_big_icon_30"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="@dimen/spacing_half_mid_10"
+                    android:src="@drawable/ic_edit"
+                    tools:src="@drawable/ic_edit" />
+
+                <LinearLayout
+                    android:id="@+id/linear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/item__card_image"
+                    android:layout_toEndOf="@id/item__card_image"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/item__card_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_half_mid_10"
+                        android:text="Title"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/spacing_mid_20" />
+
+                    <TextView
+                        android:id="@+id/item__card_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/spacing_half_mid_10"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/spacing_mid_20"
+                        tools:text="There is description about people" />
+
+
+                </LinearLayout>
+
+            </RelativeLayout>-->
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item__card_wrapper"
         android:layout_width="match_parent"
+
         android:layout_height="wrap_content"
-        android:padding="@dimen/spacing_mid_20">
+        android:layout_margin="@dimen/spacing_mid_20">
 
         <ImageView
             android:id="@+id/item__card_image"
             android:layout_width="@dimen/half_big_icon_30"
             android:layout_height="@dimen/half_big_icon_30"
             android:layout_centerVertical="true"
-            android:layout_margin="@dimen/spacing_half_mid_10"
             android:src="@drawable/ic_edit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_edit" />
 
-        <LinearLayout
-            android:id="@+id/linear"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/item__card_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/item__card_image"
-            android:layout_toEndOf="@id/item__card_image"
-            android:orientation="vertical">
+            android:layout_marginStart="10dp"
+            android:text="Title"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/spacing_mid_20"
+            app:layout_constraintStart_toEndOf="@+id/item__card_image"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/item__card_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_half_mid_10"
-                android:text="Title"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/spacing_mid_20" />
+        <TextView
+            android:id="@+id/item__card_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/spacing_mid_20"
+            app:layout_constraintStart_toEndOf="@+id/item__card_image"
+            app:layout_constraintTop_toBottomOf="@+id/item__card_title"
+            tools:text="There is description about people" />
 
-            <TextView
-                android:id="@+id/item__card_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_half_mid_10"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/spacing_mid_20"
-                tools:text="There is description about people" />
 
-            <ImageButton
-                android:id="@+id/item__card_like"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginStart="@dimen/spacing_half_mid_10"
-                android:background="@android:color/transparent"
-                android:src="@drawable/bottom_nav__like"
-                android:tintMode="multiply" />
+        <ImageButton
+            android:id="@+id/item__card_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginBottom="@dimen/spacing_tiny_4"
+            android:background="@android:color/transparent"
+            android:src="@drawable/bottom_nav__like"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </LinearLayout>
-
-    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
