@@ -6,15 +6,18 @@
     <item
         android:id="@+id/firstFragment"
         android:icon="@drawable/bottom_nav__layers"
-        android:title="Search" />
+        android:title="Notes" />
 
     <item
         android:id="@+id/secondFragment"
-        android:icon="@drawable/bottom_nav__search"/>
+        android:icon="@drawable/bottom_nav__search"
+        android:title="Search"/>
     <item
         android:id="@+id/thirdFragment"
-        android:icon="@drawable/bottom_nav__like"/>
+        android:icon="@drawable/bottom_nav__like"
+        android:title="Liked"/>
     <item
         android:id="@+id/fourthFragment"
-        android:icon="@drawable/bottom_nav__history_btn"/>
+        android:icon="@drawable/bottom_nav__history_btn"
+        android:title="Archived"/>
 </menu>

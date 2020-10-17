@@ -56,13 +56,15 @@ class MainRecyclerAdapter(
             }
         }
         holder.itemView.item__card_image.setImageResource(type)
-
+        holder.itemView.item__card_like.setBackgroundResource(R.drawable.bottom_nav__like)
         when (item.liked) {
             true -> {
+                Timber.i("RECLIKED ITEM CREATE")
                 holder.itemView.item__card_like.setBackgroundResource(R.drawable.bottom_nav__like_filled)
                 holder.itemView.item__card_like.tag = "liked"
             }
         }
+
         holder.itemView.item__card_like.setOnClickListener {
             onItemLikeClickListener.onItemClicked(position, item)
             if (holder.itemView.item__card_like.tag == "liked") {
@@ -84,6 +86,7 @@ class MainRecyclerAdapter(
     }
 
     fun bind(it: ArrayList<Note>?) {
+        Timber.i("RECBIND ITEM CREATE")
         if (it != null) {
             this.titles.clear()
             this.titles.addAll(it)

@@ -26,7 +26,7 @@
         android:background="#151E27"
         app:ai_buttonBackgroundTint="#E91E63"
         app:ai_buttonIcon="@drawable/bottom_nav__add_btn"
-        app:ai_buttonIconSize="@dimen/half_big_icon_30"
+        app:ai_buttonIconSize="@dimen/slightly_large_icon_25"
         app:ai_buttonIconTint="#FFF"
         app:ai_buttonRippleColor="@android:color/holo_red_dark"
         app:ai_buttonSize="@dimen/spacing_middle_huge_50"

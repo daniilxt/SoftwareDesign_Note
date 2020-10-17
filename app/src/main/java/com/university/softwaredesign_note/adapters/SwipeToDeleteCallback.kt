@@ -1,4 +1,4 @@
-package com.university.coursework.adapters
+package com.university.softwaredesign_note.adapters
 
 import android.content.Context
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -18,4 +18,5 @@ abstract class SwipeToDeleteCallback(context: Context, dragDir: Int, swipeDir: I
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
         TODO("Not yet implemented")
     }
+
 }

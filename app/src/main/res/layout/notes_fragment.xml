@@ -10,6 +10,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notes_frg__recycler"
         android:layout_width="match_parent"
+        tools:listitem="@layout/item_note"
+        android:layout_marginTop="@dimen/spacing_double_tiny_8"
         android:layout_height="match_parent"/>
 
     <Button

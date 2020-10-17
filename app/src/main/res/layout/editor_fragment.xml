@@ -5,6 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".main.EditorFragment">
 
+    <Toolbar
+        android:id="@+id/editor_frg__toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
