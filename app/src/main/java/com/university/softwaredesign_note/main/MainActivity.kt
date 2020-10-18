@@ -1,7 +1,9 @@
 package com.university.softwaredesign_note.main
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.university.softwaredesign_note.R
 import com.university.softwaredesign_note.helper.CiceroneHelper
 import com.university.softwaredesign_note.screens.HomeScreen
@@ -20,8 +22,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Timber.i("ON CREATE")
-
         initFragment()
+
     }
 
     private fun initFragment() {

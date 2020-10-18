@@ -6,8 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.university.softwaredesign_note.R
 
@@ -24,13 +23,12 @@ class EditorFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true)
         return inflater.inflate(R.layout.editor_fragment, container, false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        retainInstance = true;
-
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -42,15 +40,23 @@ class EditorFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val ab: ActionBar? = (activity as AppCompatActivity?)!!.supportActionBar
 
-        if (ab != null) {
-            ab.setDisplayHomeAsUpEnabled(true)
+        val toolbar: androidx.appcompat.widget.Toolbar =
+            requireActivity().findViewById(R.id.editor_frg__toolbar)
+        toolbar.inflateMenu(R.menu.toolbar_menu)
+        toolbar.setNavigationIcon(R.drawable.toolbar_nav__back)
+        toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
+        toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.firstFragment1 -> {
+                    Toast.makeText(requireContext(), "tap", Toast.LENGTH_SHORT).show()
+                }
+                else -> {
+                }
+            }
+            false
         }
-    }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
     }
-
 }
+

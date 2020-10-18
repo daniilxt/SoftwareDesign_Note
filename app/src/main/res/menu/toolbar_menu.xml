@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/firstFragment1"
+        android:icon="@drawable/bottom_nav__layers"
+        app:showAsAction="always"
+        android:title="TODO" />
+    <item
+        android:id="@+id/firstFragment2"
+        android:icon="@drawable/bottom_nav__add"
+        app:showAsAction="always"
+        android:title="TODO" />
+    <item
+        android:id="@+id/firstFragment3"
+        android:icon="@drawable/bottom_nav__like"
+        app:showAsAction="always"
+        android:title="TODO" />
+    <item
+        android:id="@+id/firstFragment4"
+        android:icon="@drawable/bottom_nav__history_btn"
+        app:showAsAction="always"
+        android:title="TODO" />
+</menu>
