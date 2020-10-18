@@ -15,7 +15,9 @@ import com.university.softwaredesign_note.adapters.OnItemClickListener
 import com.university.softwaredesign_note.bus.Event
 import com.university.softwaredesign_note.bus.EventBus
 import com.university.softwaredesign_note.helper.CiceroneHelper
+import com.university.softwaredesign_note.models.Note
 import com.university.softwaredesign_note.screens.EditorScreen
+import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.notes_fragment.*
 import kotlinx.android.synthetic.main.notes_fragment.view.*
 import timber.log.Timber
@@ -53,7 +55,7 @@ class NotesFragment : Fragment() {
         requireView().notes_frg__recycler.layoutManager = LinearLayoutManager(requireContext())
         itemAdapter = MainRecyclerAdapter(object : OnItemClickListener {
             override fun onItemClicked(position: Int, item: Any) {
-                CiceroneHelper.router().navigateTo(EditorScreen())
+                CiceroneHelper.router().navigateTo(EditorScreen(item as Note))
                 Toast.makeText(requireContext(), "Item is $position", Toast.LENGTH_SHORT).show()
             }
         }, object : OnItemClickListener {

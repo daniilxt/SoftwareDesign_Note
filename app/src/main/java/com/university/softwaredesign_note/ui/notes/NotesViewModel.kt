@@ -16,9 +16,9 @@ class FirstFragmentViewModel : ViewModel() {
         /*notes = MutableLiveData()*/
         notes.postValue(
             arrayListOf(
-                Note("Hello", false),
-                Note("World", false),
-                Note("XT", false)
+                Note(1, "Hello", "", false),
+                Note(2, "World", "", false),
+                Note(3, "XT", "", false)
             )
         )
         Timber.i("ON VIEWMODEL INIT $notes")
@@ -26,7 +26,7 @@ class FirstFragmentViewModel : ViewModel() {
 
     fun add() {
         val tmp = notes.value
-        tmp?.add(Note("tmp", true))
+        tmp?.add(Note(4, "tmp", "", true))
         notes.postValue(tmp)
     }
 
@@ -35,19 +35,31 @@ class FirstFragmentViewModel : ViewModel() {
         return notes
     }
 
-    fun changeLikeState(position: Int){
+    fun changeLikeState(position: Int) {
         val tmp = notes.value?.get(position)
         if (tmp != null) {
             tmp.liked = !tmp.liked
-            notes.value?.set(position,tmp)
+            notes.value?.set(position, tmp)
         }
     }
+
+    fun saveNote(note: Note) {
+        //todo 2 if??
+        val tmp = notes.value?.find { it -> it.id == note.id }
+        val index = notes.value?.indexOf(tmp)
+        if (index != null) {
+            if (tmp != null) {
+                notes.value?.set(index, tmp)
+            }
+        }
+    }
+
     fun filterByLike() {
         tmpNotes = notes.value
         var tmp = notes.value
         if (tmp != null) {
             println(tmp)
-            val tmp2 = tmp.stream().filter{ it -> it.liked }.collect(Collectors.toList())
+            val tmp2 = tmp.stream().filter { it -> it.liked }.collect(Collectors.toList())
             println(tmp)
             notes.postValue(tmp2 as ArrayList<Note>?)
 

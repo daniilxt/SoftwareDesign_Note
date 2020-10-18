@@ -17,6 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.university.softwaredesign_note.R
 import com.university.softwaredesign_note.bus.Event
 import com.university.softwaredesign_note.bus.EventBus
+import com.university.softwaredesign_note.models.Note
 import com.university.softwaredesign_note.ui.notes.FirstFragmentViewModel
 import com.university.softwaredesign_note.ui.notes.NotesFragment
 import io.reactivex.disposables.Disposable
@@ -79,6 +80,10 @@ class HomeFragment : Fragment() {
                     } catch (e: Exception) {
                         Timber.i("Exception $e")
                     }
+                }
+                is Note -> {
+                    viewModel.saveNote(obj)
+                    Timber.i("&&& ${obj}")
                 }
             }
         }

@@ -6,9 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import android.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.university.softwaredesign_note.R
+import com.university.softwaredesign_note.bus.EventBus
+import com.university.softwaredesign_note.models.Note
+import kotlinx.android.synthetic.main.editor_fragment.*
+import timber.log.Timber
 
 
 class EditorFragment : Fragment() {
@@ -18,6 +21,7 @@ class EditorFragment : Fragment() {
     }
 
     private lateinit var viewModel: EditorViewModel
+    private var note: Note? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,9 +45,22 @@ class EditorFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if (arguments != null) {
+            note = requireArguments().getParcelable("note")
+            editor_frg__text.setText(note?.noteText)
+            editor_frg__title.setText(note?.title)
+        }
         val toolbar: androidx.appcompat.widget.Toolbar =
             requireActivity().findViewById(R.id.editor_frg__toolbar)
-        toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
+        toolbar.setNavigationOnClickListener {
+            if (editor_frg__text.text.isNotEmpty()) {
+                note?.noteText = editor_frg__text.text.toString()
+                note?.title = editor_frg__title.text.toString()
+                EventBus.send(note)
+                Timber.i("&&& $note")
+            }
+            requireActivity().onBackPressed()
+        }
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.firstFragment1 -> {
