@@ -67,9 +67,6 @@ class NotesFragment : Fragment() {
         requireView().notes_frg__recycler.setOnScrollChangeListener { _, _, _, _, oldScrollY ->
             if (oldScrollY < 0) EventBus.send(Event.HIDE_BUTTON) else EventBus.send(Event.SHOW_BUTTON)
         }
-        notes_frg__add_btn.setOnClickListener {
-            viewModel.add()
-        }
         initBottomSheet()
     }
 

@@ -4,25 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00FF00"
+    android:alpha="0.95"
+    android:background="@color/colorPrimaryDeepDark"
     tools:context=".ui.notes.NotesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notes_frg__recycler"
         android:layout_width="match_parent"
-        tools:listitem="@layout/item_note"
-        android:layout_marginTop="@dimen/spacing_double_tiny_8"
-        android:layout_height="match_parent"/>
-
-    <Button
-        android:id="@+id/notes_frg__add_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        android:visibility="invisible"
-        android:layout_marginBottom="@dimen/spacing_very_huge_85"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_height="match_parent"
+android:paddingVertical="@dimen/spacing_double_tiny_8"
+        tools:listitem="@layout/item_note" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

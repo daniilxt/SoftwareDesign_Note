@@ -5,21 +5,25 @@
     <item
         android:id="@+id/firstFragment1"
         android:icon="@drawable/bottom_nav__layers"
-        app:showAsAction="always"
-        android:title="TODO" />
+        android:title="TODO"
+        app:iconTint="@android:color/holo_green_dark"
+        app:showAsAction="always" />
     <item
         android:id="@+id/firstFragment2"
         android:icon="@drawable/bottom_nav__add"
-        app:showAsAction="always"
-        android:title="TODO" />
+        android:title="TODO"
+        app:iconTint="@android:color/holo_green_dark"
+        app:showAsAction="always" />
     <item
         android:id="@+id/firstFragment3"
         android:icon="@drawable/bottom_nav__like"
-        app:showAsAction="always"
-        android:title="TODO" />
+        android:title="TODO"
+        app:iconTint="@android:color/holo_green_dark"
+        app:showAsAction="always" />
     <item
         android:id="@+id/firstFragment4"
         android:icon="@drawable/bottom_nav__history_btn"
-        app:showAsAction="always"
-        android:title="TODO" />
+        android:title="TODO"
+        app:iconTint="@android:color/holo_green_dark"
+        app:showAsAction="always" />
 </menu>

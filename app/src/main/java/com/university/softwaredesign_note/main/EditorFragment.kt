@@ -43,8 +43,6 @@ class EditorFragment : Fragment() {
 
         val toolbar: androidx.appcompat.widget.Toolbar =
             requireActivity().findViewById(R.id.editor_frg__toolbar)
-        toolbar.inflateMenu(R.menu.toolbar_menu)
-        toolbar.setNavigationIcon(R.drawable.toolbar_nav__back)
         toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
@@ -56,7 +54,6 @@ class EditorFragment : Fragment() {
             }
             false
         }
-
     }
 }
 

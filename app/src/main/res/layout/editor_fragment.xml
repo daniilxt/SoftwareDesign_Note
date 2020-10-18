@@ -4,17 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDeepDark"
     tools:context=".main.EditorFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/editor_frg__toolbar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorPrimaryDeepDark"
+        android:elevation="@dimen/spacing_double_tiny_8"
         app:layout_constraintEnd_toEndOf="parent"
-        app:title="Note"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
-    </androidx.appcompat.widget.Toolbar>
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/toolbar_menu"
+        app:navigationIcon="@drawable/toolbar_nav__back"
+        app:titleTextColor="@android:color/holo_green_dark" />
+
+    <EditText
+        android:id="@+id/editor_frg__text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:paddingTop="@dimen/spacing_double_tiny_8"
+        android:textColor="@android:color/holo_green_dark"
+        android:textSize="@dimen/font_mid_20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editor_frg__toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
