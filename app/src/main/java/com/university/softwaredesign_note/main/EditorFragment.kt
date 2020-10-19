@@ -1,5 +1,6 @@
 package com.university.softwaredesign_note.main
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,11 +9,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.university.softwaredesign_note.R
-import com.university.softwaredesign_note.bus.Event
 import com.university.softwaredesign_note.bus.EventBus
 import com.university.softwaredesign_note.models.Note
 import kotlinx.android.synthetic.main.editor_fragment.*
-import kotlinx.android.synthetic.main.item_note.view.*
 import timber.log.Timber
 
 
@@ -111,6 +110,15 @@ class EditorFragment : Fragment() {
                 }
                 R.id.editor_toolbar__like -> {
                     EventBus.send(note?.apply { liked = true })
+                }
+                R.id.editor_toolbar__share -> {
+
+                    val intent = Intent(Intent.ACTION_SEND)
+                    intent.type = "text/plain"
+                    intent.putExtra(Intent.EXTRA_TEXT, note?.noteText)
+                    val choseIntent =
+                        Intent.createChooser(intent, note?.title)
+                    startActivity(choseIntent)
                 }
                 else -> {
                 }
