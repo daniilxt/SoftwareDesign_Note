@@ -102,6 +102,7 @@ class HomeFragment : Fragment() {
             when (it.itemId) {
 
                 R.id.firstFragment -> {
+                    //allow don't run fun twice
                     if (stateNavigation != R.id.firstFragment) {
                         viewModel.list()
                         stateNavigation = R.id.firstFragment
@@ -117,6 +118,10 @@ class HomeFragment : Fragment() {
                     }
                 }
                 R.id.fourthFragment -> {
+                    if (stateNavigation != R.id.fourthFragment) {
+                        viewModel.filterByArchive()
+                        stateNavigation = R.id.fourthFragment
+                    }
                 }
                 else -> {
                     viewModel.add()

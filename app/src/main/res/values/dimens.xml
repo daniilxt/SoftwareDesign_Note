@@ -21,6 +21,9 @@
     <dimen name="spacing_tiny_4">4sp</dimen>
 
     <dimen name="font_huge_40">40sp</dimen>
+    <dimen name="font_big_30">30sp</dimen>
+    <dimen name="font_slightly_large_25">25sp</dimen>
+    <dimen name="font_large_24">24sp</dimen>
     <dimen name="font_mid_20">20sp</dimen>
     <dimen name="font_massive__16">16sp</dimen>
     <dimen name="font_normal_14">14sp</dimen>

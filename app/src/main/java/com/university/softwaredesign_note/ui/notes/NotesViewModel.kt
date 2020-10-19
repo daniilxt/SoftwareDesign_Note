@@ -11,27 +11,30 @@ import java.util.stream.Collectors
 class FirstFragmentViewModel : ViewModel() {
     private var notes: MutableLiveData<ArrayList<Note>> = MutableLiveData()
     private var tmpNotes = notes.value
+    private var id = 4L
 
     init {
-        /*notes = MutableLiveData()*/
-        notes.postValue(
+        //todo data provider
+        tmpNotes =
             arrayListOf(
-                Note(1, "Hello", "", false),
-                Note(2, "World", "", false),
-                Note(3, "XT", "", false)
+                Note(1, "Hello", "", false, false, false),
+                Note(2, "World", "", false, true, true),
+                Note(3, "XT", "", false, false, false)
             )
-        )
+        notes.postValue(tmpNotes?.stream()?.filter { !(it.private || it.archived) }
+            ?.collect(Collectors.toList()) as ArrayList<Note>)
         Timber.i("ON VIEWMODEL INIT $notes")
     }
 
     fun add() {
         val tmp = notes.value
-        tmp?.add(Note(4, "tmp", "", true))
+        val note = Note(id++, "tmp", "", true, false, false)
+        tmp?.add(note)
+        tmpNotes?.add(note)
         notes.postValue(tmp)
     }
 
     fun getNotes(): LiveData<ArrayList<Note>> {
-        tmpNotes = notes.value
         return notes
     }
 
@@ -55,8 +58,7 @@ class FirstFragmentViewModel : ViewModel() {
     }
 
     fun filterByLike() {
-        tmpNotes = notes.value
-        var tmp = notes.value
+        val tmp = tmpNotes
         if (tmp != null) {
             println(tmp)
             val tmp2 = tmp.stream().filter { it -> it.liked }.collect(Collectors.toList())
@@ -66,7 +68,20 @@ class FirstFragmentViewModel : ViewModel() {
         }
     }
 
-    fun list() {
-        notes.postValue(tmpNotes)
+    fun filterByArchive() {
+        var tmp = tmpNotes
+        if (tmp != null) {
+            println(tmp)
+            val tmp2 = tmp.stream().filter { it.archived }.collect(Collectors.toList())
+            println(tmp)
+            notes.postValue(tmp2 as ArrayList<Note>?)
+        }
     }
+
+    fun list() {
+        // filter notes without private mode or archive
+        notes.postValue(tmpNotes?.stream()?.filter { !(it.private || it.archived) }
+            ?.collect(Collectors.toList()) as ArrayList<Note>)
+    }
+
 }

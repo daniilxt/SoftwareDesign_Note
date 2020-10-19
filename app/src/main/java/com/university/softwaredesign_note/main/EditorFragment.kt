@@ -22,6 +22,7 @@ class EditorFragment : Fragment() {
 
     private lateinit var viewModel: EditorViewModel
     private var note: Note? = null
+    private var textSize = 20f
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,8 +64,27 @@ class EditorFragment : Fragment() {
         }
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
-                R.id.firstFragment1 -> {
-                    Toast.makeText(requireContext(), "tap", Toast.LENGTH_SHORT).show()
+                R.id.editor_toolbar__font_up -> {
+                    if (textSize <= 100) {
+                        textSize += 6
+                        editor_frg__text.textSize = textSize
+                        Toast.makeText(
+                            requireContext(),
+                            "Size is ${textSize}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+                R.id.editor_toolbar__font_down -> {
+                    if (textSize >= 26) {
+                        textSize -= 6
+                        editor_frg__text.textSize = textSize
+                        Toast.makeText(
+                            requireContext(),
+                            "Size is ${textSize}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
                 else -> {
                 }

@@ -31,19 +31,9 @@ class MainRecyclerAdapter(
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
         val item = titles[position]
 
-        holder.itemView.item__card_title.text = item.noteText
+        holder.itemView.item__card_title.text = item.title
         holder.itemView.item__card_description.text = "Description"
-/*
-        holder.itemView.item__card_like.setCustomOnClickListener({
-            holder.itemView.item__card_like.setBackgroundResource(R.drawable.bottom_nav__like_filled)
-            onItemLikeClickListener.onItemClicked(position, item)
 
-        }) {
-            holder.itemView.item__card_like.setBackgroundResource(R.drawable.bottom_nav__like)
-            holder.itemView.item__card_like.tag = "unClicked"
-            onItemLikeClickListener.onItemClicked(position, item)
-
-        }*/
         val type = when (position) {
             in 1..2 -> {
                 R.drawable.ic_edit

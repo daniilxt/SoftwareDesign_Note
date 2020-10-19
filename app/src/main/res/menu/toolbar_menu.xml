@@ -1,29 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <item
-        android:id="@+id/firstFragment1"
-        android:icon="@drawable/bottom_nav__layers"
-        android:title="TODO"
+        android:id="@+id/editor_toolbar__font_up"
+        android:icon="@drawable/toolbar_nav__font_up"
+        android:title="Size plus"
         app:iconTint="@android:color/holo_green_dark"
         app:showAsAction="always" />
     <item
-        android:id="@+id/firstFragment2"
-        android:icon="@drawable/bottom_nav__add"
-        android:title="TODO"
+        android:id="@+id/editor_toolbar__font_down"
+        android:icon="@drawable/toolbar_nav__font_down"
+        android:title="Size minus"
         app:iconTint="@android:color/holo_green_dark"
         app:showAsAction="always" />
     <item
-        android:id="@+id/firstFragment3"
+        android:id="@+id/editor_toolbar__font_lock"
+        android:icon="@drawable/toolbar_nav__lock"
+        android:title="Lock note"
+        app:iconTint="@android:color/holo_green_dark"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/editor_toolbar__delete"
+        android:icon="@drawable/toolbar_nav__delete"
+        android:title="Delete note"
+        app:iconTint="@android:color/holo_green_dark"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/editor_toolbar__like"
         android:icon="@drawable/bottom_nav__like"
-        android:title="TODO"
+        android:title="Like note"
         app:iconTint="@android:color/holo_green_dark"
         app:showAsAction="always" />
     <item
-        android:id="@+id/firstFragment4"
-        android:icon="@drawable/bottom_nav__history_btn"
-        android:title="TODO"
+        android:id="@+id/editor_toolbar__share"
+        android:icon="@drawable/toolbar_nav__share"
+        android:title="Share"
         app:iconTint="@android:color/holo_green_dark"
         app:showAsAction="always" />
 </menu>
