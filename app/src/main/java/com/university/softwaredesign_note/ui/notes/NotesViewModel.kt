@@ -28,7 +28,7 @@ class FirstFragmentViewModel : ViewModel() {
 
     fun add() {
         val tmp = notes.value
-        val note = Note(id++, "tmp", "", true, false, false)
+        val note = Note(id++, "tmp $id", "", true, false, false)
         tmp?.add(note)
         tmpNotes?.add(note)
         notes.postValue(tmp)
@@ -84,4 +84,11 @@ class FirstFragmentViewModel : ViewModel() {
             ?.collect(Collectors.toList()) as ArrayList<Note>)
     }
 
+    fun delete(note: Note) {
+        val tmp = notes.value?.find { it -> it.id == note.id }
+        if (tmp != null) {
+            notes.value?.remove(note)
+            tmpNotes?.remove(tmp)
+        }
+    }
 }

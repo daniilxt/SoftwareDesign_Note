@@ -8,9 +8,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.university.softwaredesign_note.R
+import com.university.softwaredesign_note.bus.Event
 import com.university.softwaredesign_note.bus.EventBus
 import com.university.softwaredesign_note.models.Note
 import kotlinx.android.synthetic.main.editor_fragment.*
+import kotlinx.android.synthetic.main.item_note.view.*
 import timber.log.Timber
 
 
@@ -85,6 +87,30 @@ class EditorFragment : Fragment() {
                             Toast.LENGTH_SHORT
                         ).show()
                     }
+                }
+                R.id.editor_toolbar__delete -> {
+
+                    val tmp = note
+
+                    //todo refactor
+                    if (tmp != null) {
+                        EventBus.send(
+                            DeleteableNote(
+                                tmp.id,
+                                tmp.noteText,
+                                tmp.title,
+                                tmp.liked,
+                                tmp.archived,
+                                tmp.private
+                            )
+                        )
+                        requireActivity().onBackPressed()
+
+                    }
+
+                }
+                R.id.editor_toolbar__like -> {
+                    EventBus.send(note?.apply { liked = true })
                 }
                 else -> {
                 }

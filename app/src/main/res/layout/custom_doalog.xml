@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item__card_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="@dimen/spacing_double_tiny_8"
+    android:layout_marginTop="@dimen/spacing_double_tiny_8"
+    android:layout_marginBottom="@dimen/spacing_tiny_4"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?selectableItemBackground"
+    app:cardCornerRadius="@dimen/spacing_normal_14">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item__card_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/spacing_mid_20">
+
+        <ImageView
+            android:id="@+id/item__card_image"
+            android:layout_width="@dimen/big_icon_60"
+            android:layout_height="@dimen/big_icon_60"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_edit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_edit" />
+
+
+        <TextView
+            android:id="@+id/item__card_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:maxLength="30"
+            android:text="Title"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/spacing_mid_20"
+            app:layout_constraintEnd_toEndOf="@+id/item__card_image"
+            app:layout_constraintStart_toStartOf="@+id/item__card_image"
+            tools:layout_editor_absoluteY="110dp" />
+
+        <ImageButton
+            android:id="@+id/item__card_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginBottom="@dimen/spacing_tiny_4"
+            android:background="@android:color/transparent"
+            android:src="@drawable/bottom_nav__like"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -85,6 +85,20 @@ class HomeFragment : Fragment() {
                     viewModel.saveNote(obj)
                     Timber.i("&&& ${obj}")
                 }
+
+                is DeleteableNote -> {
+                    viewModel.delete(
+                        Note(
+                            obj.id,
+                            obj.noteText,
+                            obj.title,
+                            obj.liked,
+                            obj.archived,
+                            obj.private
+                        )
+                    )
+                    Timber.i("??1 ${obj}")
+                }
             }
         }
         val colors = intArrayOf(

@@ -2,5 +2,6 @@ package com.university.softwaredesign_note.bus
 
 enum class Event {
     SHOW_BUTTON,
-    HIDE_BUTTON
+    HIDE_BUTTON,
+    DELETE_NOTE,
 }
