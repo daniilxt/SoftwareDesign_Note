@@ -7,11 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import com.university.softwaredesign_note.R
 import com.university.softwaredesign_note.bus.EventBus
 import com.university.softwaredesign_note.models.Note
 import kotlinx.android.synthetic.main.editor_fragment.*
+import kotlinx.android.synthetic.main.item_note.view.*
 import timber.log.Timber
 
 
@@ -47,13 +49,17 @@ class EditorFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val toolbar: androidx.appcompat.widget.Toolbar =
+            requireActivity().findViewById(R.id.editor_frg__toolbar)
+
         if (arguments != null) {
             note = requireArguments().getParcelable("note")
             editor_frg__text.setText(note?.noteText)
             editor_frg__title.setText(note?.title)
+            if (note!!.liked) {
+                toolbar.menu.getItem(4).setIcon(R.drawable.bottom_nav__like_filled)
+            }
         }
-        val toolbar: androidx.appcompat.widget.Toolbar =
-            requireActivity().findViewById(R.id.editor_frg__toolbar)
         toolbar.setNavigationOnClickListener {
             if (editor_frg__text.text.isNotEmpty()) {
                 note?.noteText = editor_frg__text.text.toString()
@@ -109,7 +115,13 @@ class EditorFragment : Fragment() {
 
                 }
                 R.id.editor_toolbar__like -> {
-                    EventBus.send(note?.apply { liked = true })
+                    item.setIcon(R.drawable.bottom_nav__like_filled)
+                    when (note?.liked) {
+                        true -> {
+                            item.setIcon(R.drawable.bottom_nav__like)
+                        }
+                    }
+                    note?.apply { liked = !liked }
                 }
                 R.id.editor_toolbar__share -> {
 
