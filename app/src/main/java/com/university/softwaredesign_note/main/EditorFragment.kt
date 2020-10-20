@@ -57,7 +57,9 @@ class EditorFragment : Fragment() {
             editor_frg__text.setText(note?.noteText)
             editor_frg__title.setText(note?.title)
             if (note!!.liked) {
-                toolbar.menu.getItem(4).setIcon(R.drawable.bottom_nav__like_filled)
+                //get like position in toolbar
+                toolbar.menu.getItem(R.id.editor_toolbar__like)
+                    .setIcon(R.drawable.bottom_nav__like_filled)
             }
         }
         toolbar.setNavigationOnClickListener {
@@ -121,6 +123,7 @@ class EditorFragment : Fragment() {
                             item.setIcon(R.drawable.bottom_nav__like)
                         }
                     }
+                    //change liked/unliked
                     note?.apply { liked = !liked }
                 }
                 R.id.editor_toolbar__share -> {
