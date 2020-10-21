@@ -1,4 +1,4 @@
-package com.university.softwaredesign_note.main
+package com.university.softwaredesign_note.models
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

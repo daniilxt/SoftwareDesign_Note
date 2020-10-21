@@ -17,9 +17,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.university.softwaredesign_note.R
 import com.university.softwaredesign_note.bus.Event
 import com.university.softwaredesign_note.bus.EventBus
+import com.university.softwaredesign_note.models.DeleteableNote
 import com.university.softwaredesign_note.models.Note
 import com.university.softwaredesign_note.ui.notes.FirstFragmentViewModel
-import com.university.softwaredesign_note.ui.notes.NotesFragment
 import io.reactivex.disposables.Disposable
 import timber.log.Timber
 import java.lang.Exception
@@ -41,6 +41,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         Timber.i("ON CREATE VIEW")
+        setHasOptionsMenu(true)
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
@@ -48,6 +49,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViewModel()
+        initToolbar()
         Timber.i("ON VIEW CREATED")
         disposable = EventBus.get().subscribe { obj ->
             when (obj) {
@@ -145,6 +147,12 @@ class HomeFragment : Fragment() {
             return@setOnNavigationItemSelectedListener true
         }
         bottomNavigationView.itemRippleColor = csl
+    }
+
+    private fun initToolbar() {
+        val toolbar: androidx.appcompat.widget.Toolbar =
+            requireActivity().findViewById(R.id.home_frg__toolbar)
+
     }
 
     override fun onDestroy() {

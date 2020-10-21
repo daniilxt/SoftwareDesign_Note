@@ -7,13 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import com.university.softwaredesign_note.R
 import com.university.softwaredesign_note.bus.EventBus
+import com.university.softwaredesign_note.models.DeleteableNote
 import com.university.softwaredesign_note.models.Note
 import kotlinx.android.synthetic.main.editor_fragment.*
-import kotlinx.android.synthetic.main.item_note.view.*
 import timber.log.Timber
 
 
@@ -58,7 +57,7 @@ class EditorFragment : Fragment() {
             editor_frg__title.setText(note?.title)
             if (note!!.liked) {
                 //get like position in toolbar
-                toolbar.menu.getItem(R.id.editor_toolbar__like)
+                toolbar.menu.getItem(4)
                     .setIcon(R.drawable.bottom_nav__like_filled)
             }
         }
