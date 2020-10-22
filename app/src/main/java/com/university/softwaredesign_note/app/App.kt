@@ -1,12 +1,12 @@
 package com.university.softwaredesign_note.app
 
 import android.app.Application
+import com.github.terrakok.cicerone.Cicerone
+import com.github.terrakok.cicerone.NavigatorHolder
+import com.github.terrakok.cicerone.Router
 import com.university.softwaredesign_note.BuildConfig
 import com.university.softwaredesign_note.cicerone.CiceroneHandler
 import com.university.softwaredesign_note.timber.ReleaseTree
-import ru.terrakok.cicerone.Cicerone
-import ru.terrakok.cicerone.NavigatorHolder
-import ru.terrakok.cicerone.Router
 import timber.log.Timber
 
 
@@ -43,7 +43,7 @@ class App : Application(), CiceroneHandler {
     }
 
     fun getNavigatorHolder(): NavigatorHolder {
-        return cicerone.navigatorHolder
+        return cicerone.getNavigatorHolder()
     }
 
     override fun getCicerone(): Cicerone<Router> {

@@ -1,8 +1,8 @@
 package com.university.softwaredesign_note.cicerone
 
+import com.github.terrakok.cicerone.Cicerone
+import com.github.terrakok.cicerone.Router
 
-import ru.terrakok.cicerone.Cicerone
-import ru.terrakok.cicerone.Router
 
 interface CiceroneHandler {
 
@@ -13,7 +13,7 @@ interface CiceroneHandler {
 
     fun router(): Router = getCicerone().router
 
-    fun navHolder() = getCicerone().navigatorHolder
+    fun navHolder() = getCicerone().getNavigatorHolder()
 
     /**
      * @return Cicerone obj that was created at #createCicerone()
