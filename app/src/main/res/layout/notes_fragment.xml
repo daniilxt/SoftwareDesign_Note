@@ -4,15 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:alpha="0.95"
-    android:background="@color/colorPrimaryDeepDark"
+    android:background="@color/colorPrimaryDeepDark2"
     tools:context=".main.notes.NotesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notes_frg__recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-android:paddingVertical="@dimen/spacing_double_tiny_8"
+        android:paddingVertical="@dimen/spacing_double_tiny_8"
         tools:listitem="@layout/item_note" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,6 +43,7 @@ class EditorFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
+
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         // get current fragment

@@ -53,7 +53,6 @@ class NotesFragment : Fragment() {
         requireView().notes_frg__recycler.layoutManager = LinearLayoutManager(requireContext())
         itemAdapter = MainRecyclerAdapter(object : OnItemClickListener {
             override fun onItemClicked(position: Int, item: Any) {
-
                 CiceroneHelper.router().navigateTo(EditorScreen(item as Note))
                 Toast.makeText(requireContext(), "Item is $position", Toast.LENGTH_SHORT).show()
             }

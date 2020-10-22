@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#151E27"
-        app:ai_buttonBackgroundTint="#E91E63"
+        app:ai_buttonBackgroundTint="#9A0089"
         app:ai_buttonIcon="@drawable/bottom_nav__add_btn"
         app:ai_buttonIconSize="@dimen/slightly_large_icon_25"
         app:ai_buttonIconTint="#FFF"

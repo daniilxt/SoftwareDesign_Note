@@ -11,6 +11,8 @@
     <FrameLayout
         android:id="@+id/main_activity__fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:alpha="0.93"
+        android:background="@color/colorPrimaryDeepDark" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

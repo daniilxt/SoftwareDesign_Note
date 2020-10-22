@@ -10,6 +10,7 @@
     android:layout_marginBottom="@dimen/spacing_tiny_4"
     android:clickable="true"
     android:focusable="true"
+    app:cardBackgroundColor="#DCEDC8"
     android:foreground="?selectableItemBackground"
     app:cardCornerRadius="@dimen/spacing_half_mid_10">
     <!--        <RelativeLayout
@@ -60,7 +61,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item__card_wrapper"
         android:layout_width="match_parent"
-
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/spacing_mid_20">
 
