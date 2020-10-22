@@ -72,7 +72,6 @@ class EditorFragment : Fragment() {
                 note?.noteText = editor_frg__text.text.toString()
                 note?.title = editor_frg__title.text.toString()
                 EventBus.send(note)
-                Timber.i("&&& $note")
             }
             requireActivity().onBackPressed()
         }
@@ -82,22 +81,12 @@ class EditorFragment : Fragment() {
                     if (textSize <= 100) {
                         textSize += 6
                         editor_frg__text.textSize = textSize
-                        Toast.makeText(
-                            requireContext(),
-                            "Size is ${textSize}",
-                            Toast.LENGTH_SHORT
-                        ).show()
                     }
                 }
                 R.id.editor_toolbar__font_down -> {
                     if (textSize >= 26) {
                         textSize -= 6
                         editor_frg__text.textSize = textSize
-                        Toast.makeText(
-                            requireContext(),
-                            "Size is ${textSize}",
-                            Toast.LENGTH_SHORT
-                        ).show()
                     }
                 }
                 R.id.editor_toolbar__delete -> {
