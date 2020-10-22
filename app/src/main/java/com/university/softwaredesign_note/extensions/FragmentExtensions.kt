@@ -2,6 +2,8 @@ package com.university.softwaredesign_note.extensions
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.university.softwaredesign_note.R
@@ -94,3 +96,7 @@ fun Fragment.alertDialog(title: String, message: String, textBtn: String, action
         )
     )
 }*/
+fun Fragment.animate(animationId: Int): Animation? = AnimationUtils.loadAnimation(
+    this.requireContext(),
+    animationId
+)

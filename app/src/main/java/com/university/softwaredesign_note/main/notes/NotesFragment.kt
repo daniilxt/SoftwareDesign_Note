@@ -1,4 +1,4 @@
-package com.university.softwaredesign_note.ui.notes
+package com.university.softwaredesign_note.main.notes
 
 import android.os.Bundle
 import android.view.LayoutInflater

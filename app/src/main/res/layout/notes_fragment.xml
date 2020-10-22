@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:alpha="0.95"
     android:background="@color/colorPrimaryDeepDark"
-    tools:context=".ui.notes.NotesFragment">
+    tools:context=".main.notes.NotesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notes_frg__recycler"

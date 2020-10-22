@@ -1,11 +1,10 @@
-package com.university.softwaredesign_note.ui.notes
+package com.university.softwaredesign_note.main.notes
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.university.softwaredesign_note.models.Note
 import timber.log.Timber
-import java.text.FieldPosition
 import java.util.stream.Collectors
 
 class FirstFragmentViewModel : ViewModel() {

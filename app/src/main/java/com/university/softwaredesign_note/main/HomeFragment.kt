@@ -17,10 +17,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.university.softwaredesign_note.R
 import com.university.softwaredesign_note.bus.Event
 import com.university.softwaredesign_note.bus.EventBus
+import com.university.softwaredesign_note.extensions.animate
 import com.university.softwaredesign_note.models.DeleteableNote
 import com.university.softwaredesign_note.models.Note
-import com.university.softwaredesign_note.ui.notes.FirstFragmentViewModel
+import com.university.softwaredesign_note.main.notes.FirstFragmentViewModel
 import io.reactivex.disposables.Disposable
+import kotlinx.android.synthetic.main.fragment_home.*
 import timber.log.Timber
 import java.lang.Exception
 
@@ -55,12 +57,11 @@ class HomeFragment : Fragment() {
             when (obj) {
                 Event.HIDE_BUTTON -> {
                     try {
-                        val slideUp: Animation =
-                            AnimationUtils.loadAnimation(this.requireContext(), R.anim.slide_to_bot)
-
                         if (bottomNavigationView.visibility == View.VISIBLE) {
                             bottomNavigationView.visibility = View.GONE
-                            bottomNavigationView.startAnimation(slideUp)
+                            bottomNavigationView.startAnimation(animate(R.anim.slide_to_bot))
+
+
                         }
                     } catch (e: Exception) {
                         Timber.i("Exception $e")
@@ -68,16 +69,9 @@ class HomeFragment : Fragment() {
                 }
                 Event.SHOW_BUTTON -> {
                     try {
-
-                        val slideUp: Animation =
-                            AnimationUtils.loadAnimation(
-                                this.requireContext(),
-                                R.anim.slide_from_bot
-                            )
-
                         if (bottomNavigationView.visibility == View.GONE) {
                             bottomNavigationView.visibility = View.VISIBLE
-                            bottomNavigationView.startAnimation(slideUp)
+                            bottomNavigationView.startAnimation(animate(R.anim.slide_from_bot))
                         }
                     } catch (e: Exception) {
                         Timber.i("Exception $e")
@@ -149,11 +143,21 @@ class HomeFragment : Fragment() {
         bottomNavigationView.itemRippleColor = csl
     }
 
+
     private fun initToolbar() {
         val toolbar: androidx.appcompat.widget.Toolbar =
             requireActivity().findViewById(R.id.home_frg__toolbar)
 
+        toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.home_frg__toolbar_user -> {
+                    Toast.makeText(requireContext(), "tab", Toast.LENGTH_SHORT).show()
+                }
+            }
+            false
+        }
     }
+
 
     override fun onDestroy() {
         super.onDestroy()
@@ -164,6 +168,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProvider(requireActivity()).get(FirstFragmentViewModel::class.java)
+        viewModel =
+            ViewModelProvider(requireActivity()).get(FirstFragmentViewModel::class.java)
     }
 }

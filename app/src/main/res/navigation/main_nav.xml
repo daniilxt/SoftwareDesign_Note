@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/firstFragment"
-        android:name="com.university.softwaredesign_note.ui.notes.NotesFragment"
+        android:name="com.university.softwaredesign_note.main.notes.NotesFragment"
         android:label="first_fragment"
         tools:layout="@layout/notes_fragment" />
     <fragment
