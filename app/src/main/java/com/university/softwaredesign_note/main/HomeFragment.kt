@@ -2,6 +2,7 @@ package com.university.softwaredesign_note.main
 
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.provider.ContactsContract
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,9 +19,11 @@ import com.university.softwaredesign_note.R
 import com.university.softwaredesign_note.bus.Event
 import com.university.softwaredesign_note.bus.EventBus
 import com.university.softwaredesign_note.extensions.animate
+import com.university.softwaredesign_note.extensions.showChildFragment
 import com.university.softwaredesign_note.models.DeleteableNote
 import com.university.softwaredesign_note.models.Note
 import com.university.softwaredesign_note.main.notes.FirstFragmentViewModel
+import com.university.softwaredesign_note.main.sheets.ProfileModalBottomSheet
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_home.*
 import timber.log.Timber
@@ -30,6 +33,7 @@ class HomeFragment : Fragment() {
     companion object {
         fun newInstance() =
             HomeFragment()
+        private const val BOTTOM_CONTAINER_ID: Int = R.id.home_frg__bottom_container
     }
 
     private lateinit var bottomNavigationView: BottomNavigationView
@@ -151,6 +155,7 @@ class HomeFragment : Fragment() {
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.home_frg__toolbar_user -> {
+                    showChildFragment(ProfileModalBottomSheet(), BOTTOM_CONTAINER_ID,true)
                     Toast.makeText(requireContext(), "tab", Toast.LENGTH_SHORT).show()
                 }
             }

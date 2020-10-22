@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_frg__profile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/help_frg__scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+
+        app:behavior_hideable="true"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/profile_frg__constraint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/people_info_frg__background"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:background="@drawable/profile_info_frg_bg"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="16:9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/people_info_frg__avatar"
+            android:layout_width="@dimen/spacing_pre_gigantic_115"
+            android:layout_height="@dimen/spacing_pre_gigantic_115"
+            app:layout_constraintBottom_toTopOf="@+id/people_info_frg__nick_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/people_info_frg__background"
+            app:layout_constraintTop_toBottomOf="@+id/people_info_frg__background"
+            app:srcCompat="@drawable/avatar_default" />
+
+        <ImageButton
+            android:id="@+id/people_info_frg__btn_edit"
+            android:layout_width="@dimen/spacing_huge_40"
+            android:layout_height="@dimen/spacing_huge_40"
+            android:layout_marginStart="32dp"
+            android:background="@drawable/btn_round_bg"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/people_info_frg__avatar"
+            app:layout_constraintStart_toEndOf="@+id/people_info_frg__avatar"
+            app:layout_constraintTop_toTopOf="@+id/people_info_frg__avatar"
+            app:srcCompat="@drawable/ic_edit" />
+
+        <ImageButton
+            android:id="@+id/people_info_frg__btn_save"
+            android:layout_width="@dimen/spacing_huge_40"
+            android:layout_height="@dimen/spacing_huge_40"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/btn_round_bg"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/people_info_frg__avatar"
+            app:layout_constraintEnd_toStartOf="@+id/people_info_frg__avatar"
+            app:layout_constraintTop_toTopOf="@+id/people_info_frg__avatar"
+            app:srcCompat="@drawable/ic_save" />
+
+        <TextView
+            android:id="@+id/people_info_frg__nick_name"
+            style="@style/InfoPeopleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/people_info_frg__status"
+            app:layout_constraintEnd_toEndOf="@+id/people_info_frg__avatar"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/people_info_frg__avatar"
+            app:layout_constraintTop_toBottomOf="@+id/people_info_frg__avatar"
+            tools:text="Firsov Daniil Anatolievich" />
+
+        <TextView
+            android:id="@+id/people_info_frg__status"
+            style="@style/InfoPeopleRank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="STUDENTS"
+            app:layout_constraintBottom_toTopOf="@+id/people_info_frg__background"
+            app:layout_constraintEnd_toEndOf="@+id/people_info_frg__nick_name"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/people_info_frg__nick_name"
+            app:layout_constraintTop_toBottomOf="@+id/people_info_frg__nick_name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -2,6 +2,8 @@ package com.university.softwaredesign_note.extensions
 
 import android.widget.ImageButton
 import android.widget.ImageView
+import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import com.university.softwaredesign_note.helper.StateChange
 
 /**
@@ -20,4 +22,13 @@ fun ImageButton.setCustomOnClickListener(clickOn: () -> Unit, clickOff: () -> Un
             clickOff()
         }
     })
+}
+
+fun Fragment.handleBackPressed(handler: () -> Unit) {
+    requireActivity().onBackPressedDispatcher.addCallback(
+        viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                handler()
+            }
+        })
 }
