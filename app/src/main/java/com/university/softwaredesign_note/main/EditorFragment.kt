@@ -1,11 +1,15 @@
 package com.university.softwaredesign_note.main
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.res.Configuration
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.university.softwaredesign_note.R
@@ -13,6 +17,7 @@ import com.university.softwaredesign_note.bus.EventBus
 import com.university.softwaredesign_note.models.DeleteableNote
 import com.university.softwaredesign_note.models.Note
 import kotlinx.android.synthetic.main.editor_fragment.*
+import kotlinx.android.synthetic.main.editor_fragment.view.*
 import timber.log.Timber
 
 
@@ -100,21 +105,48 @@ class EditorFragment : Fragment() {
 
                     //todo refactor
                     if (tmp != null) {
-                        EventBus.send(
-                            DeleteableNote(
-                                tmp.id,
-                                tmp.noteText,
-                                tmp.title,
-                                tmp.liked,
-                                tmp.archived,
-                                tmp.private
-                            )
-                        )
-                        requireActivity().onBackPressed()
+                        //inflate view
+                        val mDialogView = LayoutInflater.from(requireContext())
+                            .inflate(R.layout.custom_doalog, null)
+
+                        //builder dialog
+                        val mBuilder = AlertDialog.Builder(requireContext())
+                            .setView(mDialogView)
+                        val mAlertDialog = mBuilder.show()
+
+                        mDialogView.findViewById<TextView>(R.id.dialog_frg__title).text =
+                            getString(R.string.dialog_frg__sure)
+                        mDialogView.findViewById<TextView>(R.id.dialog_frg__text).text =
+                            getString(R.string.dialog_frg__attention)
+
+                        mDialogView.findViewById<TextView>(R.id.dialog_frg__no_btn)
+                            .setOnClickListener {
+                                mAlertDialog.dismiss()
+                            }
+
+                        mDialogView.findViewById<TextView>(R.id.dialog_frg__yes_btn)
+                            .setOnClickListener {
+                                EventBus.send(
+                                    DeleteableNote(
+                                        tmp.id,
+                                        tmp.noteText,
+                                        tmp.title,
+                                        tmp.liked,
+                                        tmp.archived,
+                                        tmp.private
+                                    )
+                                )
+                                mAlertDialog.dismiss()
+                                requireActivity().onBackPressed()
+                            }
+                        mAlertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                        mAlertDialog.setCancelable(false)
+
+                        //login button click of custom layout
 
                     }
-
                 }
+
                 R.id.editor_toolbar__like -> {
                     item.setIcon(R.drawable.bottom_nav__like_filled)
                     when (note?.liked) {

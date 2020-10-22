@@ -5,71 +5,99 @@
     android:id="@+id/item__card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="@dimen/spacing_double_tiny_8"
-    android:layout_marginTop="@dimen/spacing_double_tiny_8"
-    android:layout_marginBottom="@dimen/spacing_tiny_4"
     android:clickable="true"
-    android:focusable="true"
     android:elevation="@dimen/spacing_double_tiny_8"
-    android:foreground="?selectableItemBackground"
+    android:focusable="true"
+    app:cardBackgroundColor="#2B2B2B"
     app:cardCornerRadius="@dimen/spacing_normal_14">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item__card_wrapper"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/spacing_mid_20">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/item__card_image"
             android:layout_width="@dimen/big_icon_60"
             android:layout_height="@dimen/big_icon_60"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_edit"
-            app:layout_constraintBottom_toTopOf="@+id/button2"
+            android:src="@drawable/dialog_frg__warning"
+            app:layout_constraintBottom_toTopOf="@+id/view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_edit" />
-
+            tools:src="@drawable/dialog_frg__warning" />
 
         <TextView
-            android:id="@+id/item__card_title"
+            android:id="@+id/dialog_frg__text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_mid_20"
+            android:background="@android:color/transparent"
+            android:textAlignment="center"
+            android:text="text"
+            android:layout_marginBottom="@dimen/spacing_mid_20"
+            android:textSize="@dimen/font_massive__16"
+            android:paddingHorizontal="@dimen/spacing_double_tiny_8"
+            android:textColor="@android:color/holo_green_dark"
+            app:layout_constraintBottom_toTopOf="@+id/view2"
+            app:layout_constraintEnd_toEndOf="@+id/item__card_image"
+            app:layout_constraintStart_toStartOf="@+id/item__card_image"
+            app:layout_constraintTop_toBottomOf="@+id/item__card_image" />
+
+        <TextView
+            android:id="@+id/dialog_frg__title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_mid_20"
             android:lines="1"
-            android:maxLength="30"
+            android:layout_marginTop="@dimen/spacing_double_tiny_8"
             android:text="Title"
-            android:layout_marginBottom="@dimen/spacing_large_24"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/spacing_mid_20"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="@dimen/font_mid_20"
             app:layout_constraintBottom_toTopOf="@+id/item__card_image"
             app:layout_constraintEnd_toEndOf="@+id/item__card_image"
-            app:layout_constraintStart_toStartOf="@+id/item__card_image" />
+            app:layout_constraintStart_toStartOf="@+id/item__card_image"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/button2"
+        <View
+            android:id="@+id/view"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/spacing_half_mid_10"
-            android:layout_marginBottom="@dimen/spacing_large_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button3"
-            app:layout_constraintHorizontal_bias="0.5"
-            android:text="NO"
-            app:layout_constraintHorizontal_chainStyle="packed"
+            android:layout_height="1dp"
+            android:background="@android:color/white"
+            app:layout_constraintBottom_toTopOf="@+id/dialog_frg__no_btn"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
+            android:id="@+id/dialog_frg__no_btn"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_half_mid_10"
+            android:text="NO"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/dialog_frg__yes_btn"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:background="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/dialog_frg__no_btn"
+            app:layout_constraintTop_toTopOf="@+id/view" />
+        <Button
+            android:id="@+id/dialog_frg__yes_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:text="YES"
-            android:layout_marginBottom="@dimen/spacing_large_24"
+            android:background="@android:color/transparent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/button2" />
+            app:layout_constraintStart_toEndOf="@+id/dialog_frg__no_btn" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
