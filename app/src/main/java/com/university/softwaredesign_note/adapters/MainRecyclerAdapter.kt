@@ -75,6 +75,8 @@ class MainRecyclerAdapter(
 
     }
 
+    fun getItem(position: Int): Note = titles[position]
+
     fun bind(it: ArrayList<Note>?) {
         Timber.i("RECBIND ITEM CREATE")
         if (it != null) {

@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">SoftwareDesign-Note</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="editor_frg__title">Input tittle of note</string>
+
     <string name="dialog_frg__sure">Are you sure?</string>
     <string name="dialog_frg__attention">You will not be able to restore the note</string>
+    <string name="dialog_frg__app_close">Are you want to close app?</string>
 </resources>

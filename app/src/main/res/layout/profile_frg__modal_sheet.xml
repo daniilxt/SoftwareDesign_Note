@@ -34,11 +34,11 @@
             android:id="@+id/people_info_frg__avatar"
             android:layout_width="@dimen/spacing_pre_gigantic_115"
             android:layout_height="@dimen/spacing_pre_gigantic_115"
-            app:layout_constraintBottom_toTopOf="@+id/people_info_frg__nick_name"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/people_info_frg__background"
-            app:layout_constraintTop_toBottomOf="@+id/people_info_frg__background"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/avatar_default" />
 
         <ImageButton
@@ -70,26 +70,11 @@
             style="@style/InfoPeopleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/people_info_frg__status"
             app:layout_constraintEnd_toEndOf="@+id/people_info_frg__avatar"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/people_info_frg__avatar"
             app:layout_constraintTop_toBottomOf="@+id/people_info_frg__avatar"
-            tools:text="Firsov Daniil Anatolievich" />
-
-        <TextView
-            android:id="@+id/people_info_frg__status"
-            style="@style/InfoPeopleRank"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_medium"
-            android:text="STUDENTS"
-            app:layout_constraintBottom_toTopOf="@+id/people_info_frg__background"
-            app:layout_constraintEnd_toEndOf="@+id/people_info_frg__nick_name"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/people_info_frg__nick_name"
-            app:layout_constraintTop_toBottomOf="@+id/people_info_frg__nick_name" />
-
+            tools:text="Firsov Daniil" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>

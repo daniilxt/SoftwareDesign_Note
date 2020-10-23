@@ -155,8 +155,14 @@ class HomeFragment : Fragment() {
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.home_frg__toolbar_user -> {
-                    showChildFragment(ProfileModalBottomSheet(), BOTTOM_CONTAINER_ID,true)
-                    Toast.makeText(requireContext(), "tab", Toast.LENGTH_SHORT).show()
+                    //todo profile
+/*                    val tmp = 1
+                    if (tmp ==1) {
+                        showChildFragment(ProfileModalBottomSheet(), BOTTOM_CONTAINER_ID, true)
+                    }
+                    else {
+                        showChildFragment(ProfileModalBottomSheet(), BOTTOM_CONTAINER_ID, true)
+                    }*/
                 }
             }
             false
