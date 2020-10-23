@@ -60,7 +60,8 @@ class FirstFragmentViewModel : ViewModel() {
         val tmp = tmpNotes
         if (tmp != null) {
             println(tmp)
-            val tmp2 = tmp.stream().filter { it -> it.liked }.collect(Collectors.toList())
+            val tmp2 = tmp.stream().filter { it -> it.liked && !(it.private || it.archived) }
+                .collect(Collectors.toList())
             println(tmp)
             notes.postValue(tmp2 as ArrayList<Note>?)
 

@@ -71,8 +71,9 @@ class MainRecyclerAdapter(
     }
 
     fun del(position: Int) {
+        titles.removeAt(position)
+        notifyDataSetChanged()
         Timber.i("POSITION $position  $titles  ${titles.size}")
-
     }
 
     fun getItem(position: Int): Note = titles[position]

@@ -80,18 +80,30 @@ class NotesFragment : Fragment() {
             }
         })
 
-        val item =
-            object : SwipeToDeleteCallback(requireContext(), 0, ItemTouchHelper.LEFT) {
+        val itemToRight =
+            object : SwipeToDeleteCallback(requireContext(), 0, ItemTouchHelper.RIGHT) {
                 override fun onSwiped(
                     viewHolder: RecyclerView.ViewHolder,
                     direction: Int
                 ) {
+                    viewModel.saveNote(
+                        itemAdapter.getItem(viewHolder.absoluteAdapterPosition)
+                            .apply { archived = !archived })
                     itemAdapter.del(viewHolder.absoluteAdapterPosition)
-                    viewModel.delete(itemAdapter.getItem(viewHolder.absoluteAdapterPosition))
                 }
             }
-        val itemTouchHelper = ItemTouchHelper(item)
-        itemTouchHelper.attachToRecyclerView(notes_frg__recycler)
+        val itemToLeft = object :
+            SwipeToDeleteCallback(requireContext(), 0, ItemTouchHelper.LEFT) {
+            override fun onSwiped(
+                viewHolder: RecyclerView.ViewHolder,
+                direction: Int
+            ) {
+                viewModel.delete(itemAdapter.getItem(viewHolder.absoluteAdapterPosition))
+                itemAdapter.del(viewHolder.absoluteAdapterPosition)
+            }
+        }
+        ItemTouchHelper(itemToLeft).attachToRecyclerView(notes_frg__recycler)
+        ItemTouchHelper(itemToRight).attachToRecyclerView(notes_frg__recycler)
         requireView().notes_frg__recycler.adapter = itemAdapter
         requireView().notes_frg__recycler.setOnScrollChangeListener { _, _, _, _, oldScrollY ->
             if (oldScrollY < 0) EventBus.send(Event.HIDE_BUTTON) else EventBus.send(Event.SHOW_BUTTON)
