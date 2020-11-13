@@ -1,9 +1,12 @@
 package com.university.softwaredesign_note.extensions
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.view.inputmethod.InputMethodManager
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.university.softwaredesign_note.R
@@ -100,3 +103,22 @@ fun Fragment.animate(animationId: Int): Animation? = AnimationUtils.loadAnimatio
     this.requireContext(),
     animationId
 )
+
+fun Fragment.handleBackPressed(handler: () -> Unit) {
+    requireActivity().onBackPressedDispatcher.addCallback(
+        viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                handler()
+            }
+        })
+}
+
+
+fun Fragment.hideKeyBoard() {
+    val view = requireActivity().currentFocus
+    view?.let { v ->
+        val imm =
+            requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+        imm?.hideSoftInputFromWindow(v.windowToken, 0)
+    }
+}

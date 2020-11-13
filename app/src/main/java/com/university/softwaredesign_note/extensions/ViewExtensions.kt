@@ -23,12 +23,3 @@ fun ImageButton.setCustomOnClickListener(clickOn: () -> Unit, clickOff: () -> Un
         }
     })
 }
-
-fun Fragment.handleBackPressed(handler: () -> Unit) {
-    requireActivity().onBackPressedDispatcher.addCallback(
-        viewLifecycleOwner, object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                handler()
-            }
-        })
-}

@@ -26,8 +26,20 @@ class MainActivity : AppCompatActivity() {
             currentFragment: Fragment?,
             nextFragment: Fragment?
         ) {
-            fragmentTransaction.setCustomAnimations(R.anim.appear_frg, R.anim.fragment_fade_exit)
+            when (currentFragment) {
+                is NotesFragment -> {
+                    when (nextFragment) {
+                        is EditorFragment -> {
+                            fragmentTransaction.setCustomAnimations(
+                                R.anim.appear_frg,
+                                R.anim.fragment_fade_exit
+                            )
 
+                        }
+                    }
+
+                }
+            }
             super.setupFragmentTransaction(fragmentTransaction, currentFragment, nextFragment)
         }
     }

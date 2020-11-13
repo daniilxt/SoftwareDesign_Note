@@ -14,9 +14,13 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.university.softwaredesign_note.R
 import com.university.softwaredesign_note.bus.EventBus
+import com.university.softwaredesign_note.extensions.handleBackPressed
+import com.university.softwaredesign_note.extensions.hideKeyBoard
 import com.university.softwaredesign_note.extensions.showCustomDialog
+import com.university.softwaredesign_note.helper.CiceroneHelper
 import com.university.softwaredesign_note.models.DeleteableNote
 import com.university.softwaredesign_note.models.Note
+import com.university.softwaredesign_note.screens.Screens
 import kotlinx.android.synthetic.main.editor_fragment.*
 import kotlinx.android.synthetic.main.editor_fragment.view.*
 import timber.log.Timber
@@ -55,6 +59,7 @@ class EditorFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        handleBackPressed { saveNote() }
         val toolbar: androidx.appcompat.widget.Toolbar =
             requireActivity().findViewById(R.id.editor_frg__toolbar)
 
@@ -69,12 +74,7 @@ class EditorFragment : Fragment() {
             }
         }
         toolbar.setNavigationOnClickListener {
-            if (editor_frg__text.text.isNotEmpty()) {
-                note?.noteText = editor_frg__text.text.toString()
-                note?.title = editor_frg__title.text.toString()
-                EventBus.send(note)
-            }
-            requireActivity().onBackPressed()
+            saveNote()
         }
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
@@ -96,7 +96,8 @@ class EditorFragment : Fragment() {
 
                     //todo refactor
                     if (tmp != null) {
-                        showCustomDialog(getString(R.string.dialog_frg__sure),
+                        showCustomDialog(
+                            getString(R.string.dialog_frg__sure),
                             getString(R.string.dialog_frg__attention)
                         ) {
                             EventBus.send(
@@ -138,6 +139,16 @@ class EditorFragment : Fragment() {
             }
             false
         }
+    }
+
+    private fun saveNote() {
+        hideKeyBoard()
+        if (editor_frg__text.text.isNotEmpty()) {
+            note?.noteText = editor_frg__text.text.toString()
+            note?.title = editor_frg__title.text.toString()
+            EventBus.send(note)
+        }
+        CiceroneHelper.router().backTo(Screens.HomeScreen())
     }
 }
 
