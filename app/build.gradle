@@ -47,7 +47,7 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
     //Navigation
-    implementation 'ru.terrakok.cicerone:cicerone:5.1.1'
+    implementation('com.github.terrakok:cicerone:6.1')
 
     // Retrofit & OkHttp
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
