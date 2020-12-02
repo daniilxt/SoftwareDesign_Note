@@ -34,7 +34,8 @@ import java.lang.Exception
 class HomeFragment : Fragment() {
     companion object {
         fun newInstance() =
-            HomeFragment()
+                HomeFragment()
+
         private const val BOTTOM_CONTAINER_ID: Int = R.id.home_frg__bottom_container
     }
 
@@ -45,8 +46,8 @@ class HomeFragment : Fragment() {
     private var disposable: Disposable? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         Timber.i("ON CREATE VIEW")
         setHasOptionsMenu(true)
@@ -90,22 +91,24 @@ class HomeFragment : Fragment() {
 
                 is DeleteableNote -> {
                     viewModel.delete(
-                        Note(
-                            obj.id,
-                            obj.noteText,
-                            obj.title,
-                            obj.liked,
-                            obj.archived,
-                            obj.private
-                        )
+                            Note(
+                                    obj.id,
+                                    obj.noteText,
+                                    obj.title,
+                                    obj.liked,
+                                    obj.archived,
+                                    obj.private,
+                                    obj.date,
+                                    obj.dateEdit
+                            )
                     )
                     Timber.i("??1 ${obj}")
                 }
             }
         }
         val colors = intArrayOf(
-            ContextCompat.getColor(requireContext(), android.R.color.holo_green_dark),
-            ContextCompat.getColor(requireContext(), android.R.color.holo_blue_dark)
+                ContextCompat.getColor(requireContext(), android.R.color.holo_green_dark),
+                ContextCompat.getColor(requireContext(), android.R.color.holo_blue_dark)
         )
         val csl = ColorStateList(arrayOf(IntArray(0)), intArrayOf(colors[0]))
 
@@ -154,7 +157,7 @@ class HomeFragment : Fragment() {
 
     private fun initToolbar() {
         val toolbar: androidx.appcompat.widget.Toolbar =
-            requireActivity().findViewById(R.id.home_frg__toolbar)
+                requireActivity().findViewById(R.id.home_frg__toolbar)
 
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
@@ -184,6 +187,6 @@ class HomeFragment : Fragment() {
 
     private fun initViewModel() {
         viewModel =
-            ViewModelProvider(requireActivity()).get(FirstFragmentViewModel::class.java)
+                ViewModelProvider(requireActivity()).get(FirstFragmentViewModel::class.java)
     }
 }

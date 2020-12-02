@@ -24,6 +24,7 @@ import com.university.softwaredesign_note.screens.Screens
 import kotlinx.android.synthetic.main.editor_fragment.*
 import kotlinx.android.synthetic.main.editor_fragment.view.*
 import timber.log.Timber
+import java.util.*
 
 
 class EditorFragment : Fragment() {
@@ -37,8 +38,8 @@ class EditorFragment : Fragment() {
     private var textSize = 20f
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         setHasOptionsMenu(true)
         return inflater.inflate(R.layout.editor_fragment, container, false)
@@ -61,7 +62,7 @@ class EditorFragment : Fragment() {
 
         handleBackPressed { saveNote() }
         val toolbar: androidx.appcompat.widget.Toolbar =
-            requireActivity().findViewById(R.id.editor_frg__toolbar)
+                requireActivity().findViewById(R.id.editor_frg__toolbar)
 
         if (arguments != null) {
             note = requireArguments().getParcelable("note")
@@ -70,7 +71,7 @@ class EditorFragment : Fragment() {
             if (note!!.liked) {
                 //get like position in toolbar
                 toolbar.menu.getItem(4)
-                    .setIcon(R.drawable.bottom_nav__like_filled)
+                        .setIcon(R.drawable.bottom_nav__like_filled)
             }
         }
         toolbar.setNavigationOnClickListener {
@@ -97,18 +98,20 @@ class EditorFragment : Fragment() {
                     //todo refactor
                     if (tmp != null) {
                         showCustomDialog(
-                            getString(R.string.dialog_frg__sure),
-                            getString(R.string.dialog_frg__attention)
+                                getString(R.string.dialog_frg__sure),
+                                getString(R.string.dialog_frg__attention)
                         ) {
                             EventBus.send(
-                                DeleteableNote(
-                                    tmp.id,
-                                    tmp.noteText,
-                                    tmp.title,
-                                    tmp.liked,
-                                    tmp.archived,
-                                    tmp.private
-                                )
+                                    DeleteableNote(
+                                            tmp.id,
+                                            tmp.noteText,
+                                            tmp.title,
+                                            tmp.liked,
+                                            tmp.archived,
+                                            tmp.private,
+                                            tmp.date,
+                                            tmp.dateEdit
+                                    )
                             )
                             requireActivity().onBackPressed()
                         }
@@ -131,7 +134,7 @@ class EditorFragment : Fragment() {
                     intent.type = "text/plain"
                     intent.putExtra(Intent.EXTRA_TEXT, note?.noteText)
                     val choseIntent =
-                        Intent.createChooser(intent, note?.title)
+                            Intent.createChooser(intent, note?.title)
                     startActivity(choseIntent)
                 }
                 else -> {
@@ -145,10 +148,23 @@ class EditorFragment : Fragment() {
         hideKeyBoard()
         if (editor_frg__text.text.isNotEmpty()) {
             note?.noteText = editor_frg__text.text.toString()
-            note?.title = editor_frg__title.text.toString()
+            note?.title = createTitle()
+            note?.dateEdit = Date().time
             EventBus.send(note)
         }
         CiceroneHelper.router().backTo(Screens.HomeScreen())
+    }
+
+    //todo simplify
+    private fun createTitle():String{
+        var itemTitle = editor_frg__title.text.toString()
+        if (itemTitle.isEmpty()) {
+            itemTitle = editor_frg__text.text.toString().substring(0, editor_frg__text.text.length)
+            if (editor_frg__text.text.length >= 30) {
+                itemTitle = editor_frg__text.text.toString().substring(0, 30)
+            }
+        }
+        return  itemTitle
     }
 }
 

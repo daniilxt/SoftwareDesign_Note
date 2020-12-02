@@ -11,6 +11,8 @@ class DeleteableNote(
     var title: String = "",
     var liked: Boolean,
     var archived: Boolean,
-    val private: Boolean
+    val private: Boolean,
+    val date: Long,
+    var dateEdit: Long
 ) :
     Parcelable

@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.university.softwaredesign_note.models.Note
 import timber.log.Timber
+import java.util.*
 import java.util.stream.Collectors
+import kotlin.collections.ArrayList
 
 class FirstFragmentViewModel : ViewModel() {
     private var notes: MutableLiveData<ArrayList<Note>> = MutableLiveData()
@@ -14,11 +16,12 @@ class FirstFragmentViewModel : ViewModel() {
 
     init {
         //todo data provider
+        val date = Date().time
         tmpNotes =
             arrayListOf(
-                Note(1, "Hello", "", false, false, false),
-                Note(2, "World", "", false, true, true),
-                Note(3, "XT", "", false, false, false)
+                Note(1, "Hello", "", false, false, false,date,date),
+                Note(2, "World", "", false, true, true,date,date),
+                Note(3, "XT", "", false, false, false,date,date)
             )
         notes.postValue(tmpNotes?.stream()?.filter { !(it.private || it.archived) }
             ?.collect(Collectors.toList()) as ArrayList<Note>)

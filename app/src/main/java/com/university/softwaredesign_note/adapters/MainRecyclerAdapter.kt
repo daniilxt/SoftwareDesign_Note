@@ -6,21 +6,25 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.university.softwaredesign_note.R
 import com.university.softwaredesign_note.extensions.setCustomOnClickListener
+import com.university.softwaredesign_note.extensions.toFormat
+import com.university.softwaredesign_note.extensions.toStrDate
 import com.university.softwaredesign_note.models.Note
 import kotlinx.android.synthetic.main.item_note.view.*
 import timber.log.Timber
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainRecyclerAdapter(
-    private val onItemClickListener: OnItemClickListener,
-    private val onItemLikeClickListener: OnItemClickListener
+        private val onItemClickListener: OnItemClickListener,
+        private val onItemLikeClickListener: OnItemClickListener
 
 ) :
-    RecyclerView.Adapter<DataViewHolder>() {
+        RecyclerView.Adapter<DataViewHolder>() {
     private val titles = mutableListOf<Note>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder {
         return DataViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_note, parent, false)
+                LayoutInflater.from(parent.context).inflate(R.layout.item_note, parent, false)
         )
     }
 
@@ -32,7 +36,7 @@ class MainRecyclerAdapter(
         val item = titles[position]
 
         holder.itemView.item__card_title.text = item.title
-        holder.itemView.item__card_description.text = "Description"
+        holder.itemView.item__card_description.text = Date((item.dateEdit)).toStrDate()
 
         val type = when (position) {
             in 1..2 -> {
