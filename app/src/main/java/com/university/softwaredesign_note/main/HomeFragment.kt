@@ -20,10 +20,12 @@ import com.university.softwaredesign_note.bus.Event
 import com.university.softwaredesign_note.bus.EventBus
 import com.university.softwaredesign_note.extensions.animate
 import com.university.softwaredesign_note.extensions.showChildFragment
+import com.university.softwaredesign_note.helper.CiceroneHelper
 import com.university.softwaredesign_note.models.DeleteableNote
 import com.university.softwaredesign_note.models.Note
 import com.university.softwaredesign_note.main.notes.FirstFragmentViewModel
 import com.university.softwaredesign_note.main.sheets.ProfileModalBottomSheet
+import com.university.softwaredesign_note.screens.Screens
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_home.*
 import timber.log.Timber
@@ -139,6 +141,10 @@ class HomeFragment : Fragment() {
                 }
                 else -> {
                     viewModel.add()
+                    val note = viewModel.getLast()
+                    if (note != null){
+                        CiceroneHelper.router().navigateTo(Screens.EditorScreen(note))
+                    }
                     Toast.makeText(requireContext(), "fab", Toast.LENGTH_SHORT).show()
                 }
             }

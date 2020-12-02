@@ -33,6 +33,9 @@ class FirstFragmentViewModel : ViewModel() {
         notes.postValue(tmp)
     }
 
+    fun getLast():Note?{
+        return notes.value?.last()
+    }
     fun getNotes(): LiveData<ArrayList<Note>> {
         return notes
     }
