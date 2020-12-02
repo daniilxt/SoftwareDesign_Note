@@ -25,9 +25,8 @@ class FirstFragmentViewModel : ViewModel() {
         Timber.i("ON VIEWMODEL INIT $notes")
     }
 
-    fun add() {
+    fun add(note:Note = Note.createNote()) { //по дефолту генерируется
         val tmp = notes.value
-        val note = Note(id++, "tmp $id", "", true, false, false)
         tmp?.add(note)
         tmpNotes?.add(note)
         notes.postValue(tmp)

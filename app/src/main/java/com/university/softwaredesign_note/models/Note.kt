@@ -13,7 +13,15 @@ data class Note(
     var archived: Boolean,
     val private: Boolean
 ) :
-    Parcelable
+    Parcelable{
+
+    companion object{
+        var id:Long = 0
+        fun createNote():Note{
+            return  Note(id++, "tmp $id", "", false, false, false)
+        }
+    }
+}
 
 /*
 Timber.i("${tmpNotes?.stream()?.filter { (!it.private xor it.archived) }

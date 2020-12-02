@@ -140,11 +140,9 @@ class HomeFragment : Fragment() {
                     }
                 }
                 else -> {
-                    viewModel.add()
-                    val note = viewModel.getLast()
-                    if (note != null){
-                        CiceroneHelper.router().navigateTo(Screens.EditorScreen(note))
-                    }
+                    val note = Note.createNote()
+                    CiceroneHelper.router().navigateTo(Screens.EditorScreen(note))
+                    viewModel.add(note)
                     Toast.makeText(requireContext(), "fab", Toast.LENGTH_SHORT).show()
                 }
             }
