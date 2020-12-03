@@ -33,7 +33,7 @@ class NotesFragment : Fragment() {
 
     companion object {
         fun newInstance() =
-            NotesFragment()
+                NotesFragment()
     }
 
     private lateinit var viewModel: FirstFragmentViewModel
@@ -42,13 +42,21 @@ class NotesFragment : Fragment() {
         Timber.i("ON ACTIVITY CREATED CREATED")
         viewModel = ViewModelProvider(requireActivity()).get(FirstFragmentViewModel::class.java)
         viewModel.getNotes().observe(viewLifecycleOwner, Observer {
+            Timber.i("RECLIKED ITEM CREATE")
+            val tes = viewModel.getNotes().value
+            if (tes != null) {
+                for (item in tes) {
+                    Timber.i(" \n RECLIKED ITEMS is  $item")
+                }
+            }
+
             itemAdapter.bind(it)
         })
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         Timber.i("ON CREATEVIEW CREATED")
         return inflater.inflate(R.layout.notes_fragment, container, false)
@@ -60,7 +68,7 @@ class NotesFragment : Fragment() {
         initRecycler()
         handleBackPressed {
             showCustomDialog(getString(R.string.dialog_frg__sure),
-                getString(R.string.dialog_frg__app_close)) {
+                    getString(R.string.dialog_frg__app_close)) {
                 CiceroneHelper.router().exit()
             }
         }
@@ -81,22 +89,22 @@ class NotesFragment : Fragment() {
         })
 
         val itemToRight =
-            object : SwipeToDeleteCallback(requireContext(), 0, ItemTouchHelper.RIGHT) {
-                override fun onSwiped(
+                object : SwipeToDeleteCallback(requireContext(), 0, ItemTouchHelper.RIGHT) {
+                    override fun onSwiped(
+                            viewHolder: RecyclerView.ViewHolder,
+                            direction: Int
+                    ) {
+                        viewModel.saveNote(
+                                itemAdapter.getItem(viewHolder.absoluteAdapterPosition)
+                                        .apply { archived = !archived })
+                        itemAdapter.del(viewHolder.absoluteAdapterPosition)
+                    }
+                }
+        val itemToLeft = object :
+                SwipeToDeleteCallback(requireContext(), 0, ItemTouchHelper.LEFT) {
+            override fun onSwiped(
                     viewHolder: RecyclerView.ViewHolder,
                     direction: Int
-                ) {
-                    viewModel.saveNote(
-                        itemAdapter.getItem(viewHolder.absoluteAdapterPosition)
-                            .apply { archived = !archived })
-                    itemAdapter.del(viewHolder.absoluteAdapterPosition)
-                }
-            }
-        val itemToLeft = object :
-            SwipeToDeleteCallback(requireContext(), 0, ItemTouchHelper.LEFT) {
-            override fun onSwiped(
-                viewHolder: RecyclerView.ViewHolder,
-                direction: Int
             ) {
                 val note = itemAdapter.getItem(viewHolder.absoluteAdapterPosition)
                 viewModel.delete(note)

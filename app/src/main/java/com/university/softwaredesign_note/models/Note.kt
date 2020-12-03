@@ -7,14 +7,14 @@ import java.util.*
 
 @Parcelize
 data class Note(
-        var id: Long,
+        var id: Long=-1,
         var noteText: String = "",
         var title: String = "",
-        var liked: Boolean,
-        var archived: Boolean,
-        val private: Boolean,
-        val date: Long,
-        var dateEdit: Long
+        var liked: Boolean = false,
+        var archived: Boolean = false,
+        val private: Boolean = false,
+        val date: Long = -1,
+        var dateEdit: Long = -1
 ) :
         Parcelable {
 

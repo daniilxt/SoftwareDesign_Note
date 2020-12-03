@@ -53,7 +53,6 @@ class MainRecyclerAdapter(
         holder.itemView.item__card_like.setBackgroundResource(R.drawable.bottom_nav__like)
         when (item.liked) {
             true -> {
-                Timber.i("RECLIKED ITEM CREATE")
                 holder.itemView.item__card_like.setBackgroundResource(R.drawable.bottom_nav__like_filled)
                 holder.itemView.item__card_like.tag = "liked"
             }

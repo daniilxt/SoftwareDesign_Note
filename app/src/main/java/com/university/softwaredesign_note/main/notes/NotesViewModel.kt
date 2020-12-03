@@ -13,33 +13,30 @@ import kotlin.collections.ArrayList
 class FirstFragmentViewModel : ViewModel() {
     private var notes: MutableLiveData<ArrayList<Note>> = MutableLiveData()
     private var tmpNotes = notes.value
-    private var id = 4L
 
     init {
-        //todo data provider
-        val date = Date().time
-        tmpNotes =
-            arrayListOf(
-                Note(1, "Hello", "", false, false, false,date,date),
-                Note(2, "World", "", false, true, true,date,date),
-                Note(3, "XT", "", false, false, false,date,date)
-            )
-        notes.postValue(tmpNotes?.stream()?.filter { !(it.private || it.archived) }
-            ?.collect(Collectors.toList()) as ArrayList<Note>)
-        Timber.i("ON VIEWMODEL INIT $notes")
+        FirebaseDB.initRepository {
+            setData(it)
+        }
     }
 
-    fun add(note:Note = Note.createNote()) { //по дефолту генерируется
-        val tmp = notes.value
-        tmp?.add(note)
-        tmpNotes?.add(note)
-        notes.postValue(tmp)
+    private fun setData(notesList: List<Note>) {
+
+        tmpNotes = notes.value
+        //notes.value = notesList as ArrayList<Note>
+        notes.postValue(notesList as ArrayList<Note>)
+        //notesList.forEach { Timber.i("VIEMO ARR: ${it}") }
+    }
+
+    fun add(note: Note = Note.createNote()) { //по дефолту генерируется
+
         FirebaseDB.sendNote(note)
     }
 
-    fun getLast():Note?{
+    fun getLast(): Note? {
         return notes.value?.last()
     }
+
     fun getNotes(): LiveData<ArrayList<Note>> {
         return notes
     }
@@ -49,6 +46,7 @@ class FirstFragmentViewModel : ViewModel() {
         if (tmp != null) {
             tmp.liked = !tmp.liked
             notes.value?.set(position, tmp)
+            FirebaseDB.sendNote(tmp)
         }
     }
 
@@ -69,7 +67,7 @@ class FirstFragmentViewModel : ViewModel() {
         if (tmp != null) {
             println(tmp)
             val tmp2 = tmp.stream().filter { it -> it.liked && !(it.private || it.archived) }
-                .collect(Collectors.toList())
+                    .collect(Collectors.toList())
             println(tmp)
             notes.postValue(tmp2 as ArrayList<Note>?)
 
@@ -87,7 +85,7 @@ class FirstFragmentViewModel : ViewModel() {
     fun list() {
         // filter notes without private mode or archive
         notes.postValue(tmpNotes?.stream()?.filter { !(it.private || it.archived) }
-            ?.collect(Collectors.toList()) as ArrayList<Note>)
+                ?.collect(Collectors.toList()) as ArrayList<Note>)
     }
 
     fun delete(note: Note) {
