@@ -3,6 +3,7 @@ package com.university.softwaredesign_note.main.notes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.university.softwaredesign_note.firebase_db.FirebaseDB
 import com.university.softwaredesign_note.models.Note
 import timber.log.Timber
 import java.util.*
@@ -33,6 +34,7 @@ class FirstFragmentViewModel : ViewModel() {
         tmp?.add(note)
         tmpNotes?.add(note)
         notes.postValue(tmp)
+        FirebaseDB.sendNote(note)
     }
 
     fun getLast():Note?{
@@ -57,6 +59,7 @@ class FirstFragmentViewModel : ViewModel() {
         if (index != null) {
             if (tmp != null) {
                 notes.value?.set(index, tmp)
+                FirebaseDB.sendNote(note)
             }
         }
     }
@@ -76,9 +79,7 @@ class FirstFragmentViewModel : ViewModel() {
     fun filterByArchive() {
         var tmp = tmpNotes
         if (tmp != null) {
-            println(tmp)
             val tmp2 = tmp.stream().filter { it.archived }.collect(Collectors.toList())
-            println(tmp)
             notes.postValue(tmp2 as ArrayList<Note>?)
         }
     }
@@ -92,6 +93,7 @@ class FirstFragmentViewModel : ViewModel() {
     fun delete(note: Note) {
         val tmp = notes.value?.find { it -> it.id == note.id }
         if (tmp != null) {
+            FirebaseDB.deleteNote(note.id)
             notes.value?.remove(note)
             tmpNotes?.remove(tmp)
         }

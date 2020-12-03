@@ -17,6 +17,7 @@ import com.university.softwaredesign_note.bus.EventBus
 import com.university.softwaredesign_note.extensions.handleBackPressed
 import com.university.softwaredesign_note.extensions.hideKeyBoard
 import com.university.softwaredesign_note.extensions.showCustomDialog
+import com.university.softwaredesign_note.firebase_db.FirebaseDB
 import com.university.softwaredesign_note.helper.CiceroneHelper
 import com.university.softwaredesign_note.models.DeleteableNote
 import com.university.softwaredesign_note.models.Note
@@ -36,6 +37,7 @@ class EditorFragment : Fragment() {
     private lateinit var viewModel: EditorViewModel
     private var note: Note? = null
     private var textSize = 20f
+    private var isDeletable = false
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -113,6 +115,7 @@ class EditorFragment : Fragment() {
                                             tmp.dateEdit
                                     )
                             )
+                            isDeletable = !isDeletable
                             requireActivity().onBackPressed()
                         }
                     }
@@ -146,17 +149,21 @@ class EditorFragment : Fragment() {
 
     private fun saveNote() {
         hideKeyBoard()
+        CiceroneHelper.router().backTo(Screens.HomeScreen())
         if (editor_frg__text.text.isNotEmpty()) {
             note?.noteText = editor_frg__text.text.toString()
             note?.title = createTitle()
             note?.dateEdit = Date().time
+            if (isDeletable) {
+                isDeletable = !isDeletable
+                return  // leave from function
+            }
             EventBus.send(note)
         }
-        CiceroneHelper.router().backTo(Screens.HomeScreen())
     }
 
     //todo simplify
-    private fun createTitle():String{
+    private fun createTitle(): String {
         var itemTitle = editor_frg__title.text.toString()
         if (itemTitle.isEmpty()) {
             itemTitle = editor_frg__text.text.toString().substring(0, editor_frg__text.text.length)
@@ -164,7 +171,7 @@ class EditorFragment : Fragment() {
                 itemTitle = editor_frg__text.text.toString().substring(0, 30)
             }
         }
-        return  itemTitle
+        return itemTitle
     }
 }
 

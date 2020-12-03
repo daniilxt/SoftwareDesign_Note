@@ -22,11 +22,11 @@ data class Note(
         var id: Long = 0
         fun createNote(): Note {
             val date = Date().time
-            val dateStr = Date((date)).toFormat(
-                    "dd MMMM в HH:mm:ss",
-                    Locale("ru")
-            )
-            return Note(id++, "tmp $id", "", false, false, false, date, date)
+            return Note(date, "tmp $id", "", false, false, false, date, date)
         }
+    }
+
+    override fun toString(): String {
+        return "Note(id=$id, noteText='$noteText', title='$title', liked=$liked, archived=$archived, private=$private, date=$date, dateEdit=$dateEdit)"
     }
 }

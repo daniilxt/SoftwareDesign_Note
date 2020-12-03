@@ -20,6 +20,7 @@ import com.university.softwaredesign_note.bus.Event
 import com.university.softwaredesign_note.bus.EventBus
 import com.university.softwaredesign_note.extensions.animate
 import com.university.softwaredesign_note.extensions.showChildFragment
+import com.university.softwaredesign_note.firebase_db.FirebaseDB
 import com.university.softwaredesign_note.helper.CiceroneHelper
 import com.university.softwaredesign_note.models.DeleteableNote
 import com.university.softwaredesign_note.models.Note
@@ -102,7 +103,7 @@ class HomeFragment : Fragment() {
                                     obj.dateEdit
                             )
                     )
-                    Timber.i("??1 ${obj}")
+                    Timber.i("DELETE NOTE: $obj")
                 }
             }
         }

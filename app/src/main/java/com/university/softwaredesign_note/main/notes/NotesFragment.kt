@@ -19,6 +19,7 @@ import com.university.softwaredesign_note.bus.Event
 import com.university.softwaredesign_note.bus.EventBus
 import com.university.softwaredesign_note.extensions.handleBackPressed
 import com.university.softwaredesign_note.extensions.showCustomDialog
+import com.university.softwaredesign_note.firebase_db.FirebaseDB
 import com.university.softwaredesign_note.helper.CiceroneHelper
 import com.university.softwaredesign_note.models.DeleteableNote
 import com.university.softwaredesign_note.models.Note
@@ -76,7 +77,6 @@ class NotesFragment : Fragment() {
             override fun onItemClicked(position: Int, item: Any) {
                 Toast.makeText(requireContext(), "Item liked  $position", Toast.LENGTH_SHORT).show()
                 viewModel.changeLikeState(position)
-
             }
         })
 
@@ -98,7 +98,8 @@ class NotesFragment : Fragment() {
                 viewHolder: RecyclerView.ViewHolder,
                 direction: Int
             ) {
-                viewModel.delete(itemAdapter.getItem(viewHolder.absoluteAdapterPosition))
+                val note = itemAdapter.getItem(viewHolder.absoluteAdapterPosition)
+                viewModel.delete(note)
                 itemAdapter.del(viewHolder.absoluteAdapterPosition)
             }
         }
