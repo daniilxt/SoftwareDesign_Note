@@ -8,6 +8,7 @@ import com.github.terrakok.cicerone.Command
 import com.github.terrakok.cicerone.Navigator
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.university.softwaredesign_note.R
+import com.university.softwaredesign_note.firebase_db.FirebaseAuthentication
 import com.university.softwaredesign_note.helper.CiceroneHelper
 import com.university.softwaredesign_note.main.notes.NotesFragment
 import com.university.softwaredesign_note.screens.Screens.AuthScreen
@@ -18,22 +19,22 @@ import timber.log.Timber
 class MainActivity : AppCompatActivity() {
 
     private val navigator = object : AppNavigator(
-        this,
-        R.id.main_activity__fragment,
-        supportFragmentManager
+            this,
+            R.id.main_activity__fragment,
+            supportFragmentManager
     ) {
         override fun setupFragmentTransaction(
-            fragmentTransaction: FragmentTransaction,
-            currentFragment: Fragment?,
-            nextFragment: Fragment?
+                fragmentTransaction: FragmentTransaction,
+                currentFragment: Fragment?,
+                nextFragment: Fragment?
         ) {
             when (currentFragment) {
                 is NotesFragment -> {
                     when (nextFragment) {
                         is EditorFragment -> {
                             fragmentTransaction.setCustomAnimations(
-                                R.anim.appear_frg,
-                                R.anim.fragment_fade_exit
+                                    R.anim.appear_frg,
+                                    R.anim.fragment_fade_exit
                             )
 
                         }
@@ -54,8 +55,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFragment() {
-      //  CiceroneHelper.router().newRootScreen(HomeScreen())
-        CiceroneHelper.router().newRootScreen(AuthScreen())
+        if (FirebaseAuthentication.getUser() != null) {
+            CiceroneHelper.router().newRootScreen(HomeScreen())
+        } else {
+            CiceroneHelper.router().newRootScreen(AuthScreen())
+        }
     }
 
     override fun onResume() {

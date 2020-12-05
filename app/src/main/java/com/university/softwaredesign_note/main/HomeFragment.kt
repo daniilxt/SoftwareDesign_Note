@@ -122,6 +122,7 @@ class HomeFragment : Fragment() {
             when (it.itemId) {
 
                 R.id.firstFragment -> {
+                    Timber.i("GETTTT NOTES")
                     //allow don't run fun twice
                     if (stateNavigation != R.id.firstFragment) {
                         viewModel.list()

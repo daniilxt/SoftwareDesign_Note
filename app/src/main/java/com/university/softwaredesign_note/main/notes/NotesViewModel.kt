@@ -20,15 +20,12 @@ class FirstFragmentViewModel : ViewModel() {
     private var notes: MutableLiveData<ArrayList<Note>> = MutableLiveData()
     private var firebaseNotes: MutableLiveData<ArrayList<Note>> = MutableLiveData() //костыль, тут всегда полная копия заметок
     private var tmpNotes = notes.value
-    private var isLiked = false
-    private var isLArchived = false
     private var event = Status.LIST
 
     init {
         FirebaseDB.initRepository {
             setData(it)
         }
-
     }
 
 
@@ -63,7 +60,7 @@ class FirstFragmentViewModel : ViewModel() {
 
     fun getNotes(): LiveData<ArrayList<Note>> {
         //TODO help
-        //сейчас сделано так, чтобы прир null не возникло npe
+        //сейчас сделано так, чтобы при null не возникло npe
         if (notes.value != null && tmpNotes == null) {
             Timber.i("GGGET ${notes.value}")
             Timber.i("GGGET ${tmpNotes}")
@@ -119,6 +116,7 @@ class FirstFragmentViewModel : ViewModel() {
 
     fun list() {
         event = Status.LIST
+        if (firebaseNotes.value != null)
         // filter notes without private mode or archive
         notes.postValue(firebaseNotes.value?.stream()?.filter { !(it.private || it.archived) }
                 ?.collect(Collectors.toList()) as ArrayList<Note>)

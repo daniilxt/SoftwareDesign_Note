@@ -43,13 +43,6 @@ class NotesFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(FirstFragmentViewModel::class.java)
         viewModel.getNotes().observe(viewLifecycleOwner, Observer {
             Timber.i("RECLIKED ITEM CREATE")
-            val tes = viewModel.getNotes().value
-            if (tes != null) {
-                for (item in tes) {
-                    Timber.i(" \n RECLIKED ITEMS is  $item")
-                }
-            }
-
             itemAdapter.bind(it)
         })
     }

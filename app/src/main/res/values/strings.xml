@@ -11,4 +11,6 @@
     <string name="auth_frg__login_ic">Auth frg icon user</string>
     <string name="auth_frg__login">Input your email</string>
     <string name="auth_frg__password">Input your password</string>
+    <string name="reg_frg__login_ic">Registration login</string>
+    <string name="reg_frg__input_password_again">Input password again</string>
 </resources>

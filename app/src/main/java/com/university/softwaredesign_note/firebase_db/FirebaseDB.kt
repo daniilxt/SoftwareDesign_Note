@@ -6,33 +6,17 @@ import timber.log.Timber
 
 object FirebaseDB : ExtensionsCRUD {
     private var usersTest = FirebaseDatabase.getInstance().getReference("TestUsers")
-    private var groupsRef = FirebaseDatabase.getInstance().getReference("GROUP")
+    private var usersRef = FirebaseDatabase.getInstance().getReference("users")
     private var id = 0;
+    private val user = FirebaseAuthentication.getUser()
 
-    fun testInstance(): DatabaseReference {
-        return usersTest
+    override fun createUser(userID: String) {
+        usersRef.child(userID).setValue(userID)
     }
 
-    //todo
-    // private var currentUser = FirebaseAuth.
-    override fun getUserNotes(callback: (MutableList<Note>?) -> Unit) {
-        // usersList.child()
-    }
-
-    fun sendNote(note: Note) {
+    override fun sendNote(note: Note) {
         Timber.i("PATH is :: ${usersTest}   note is:: ${note}")
-        usersTest.child((note.id).toString()).setValue(note)
-    }
-
-    /**
-     * Creates a new group from name.
-     *
-     * @param groupName Name of the future group.
-     */
-    fun createGroup(groupName: String) {
-        if (groupName.isNotEmpty()) {
-            // groupsRef.child(groupName).child(user!!.uid).setValue(user!!.uid)
-        }
+        usersTest.child(user!!.uid).child(note.id.toString()).setValue(note)
     }
 
     /**
@@ -40,11 +24,11 @@ object FirebaseDB : ExtensionsCRUD {
      *
      * @param groupName Name of the future group.
      */
-    fun deleteNote(noteId: Long) {
-        usersTest.child(noteId.toString()).removeValue()
+    override fun deleteNote(noteId: Long) {
+        usersTest.child(user!!.uid).child(noteId.toString()).removeValue()
     }
 
-    fun initRepository(callback: (arr: List<Note>) -> Unit) {
+    override fun initRepository(callback: (arr: List<Note>) -> Unit) {
         val notesListener = object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {
             }
@@ -62,7 +46,7 @@ object FirebaseDB : ExtensionsCRUD {
                 }
             }
         }
-        usersTest.addValueEventListener(notesListener)
+        usersTest.child(user!!.uid).addValueEventListener(notesListener)
     }
 
     /**
