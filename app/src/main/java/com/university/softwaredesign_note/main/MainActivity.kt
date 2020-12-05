@@ -10,6 +10,7 @@ import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.university.softwaredesign_note.R
 import com.university.softwaredesign_note.helper.CiceroneHelper
 import com.university.softwaredesign_note.main.notes.NotesFragment
+import com.university.softwaredesign_note.screens.Screens.AuthScreen
 import com.university.softwaredesign_note.screens.Screens.HomeScreen
 import timber.log.Timber
 
@@ -53,7 +54,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFragment() {
-        CiceroneHelper.router().newRootScreen(HomeScreen())
+      //  CiceroneHelper.router().newRootScreen(HomeScreen())
+        CiceroneHelper.router().newRootScreen(AuthScreen())
     }
 
     override fun onResume() {

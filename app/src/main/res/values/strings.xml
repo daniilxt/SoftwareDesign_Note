@@ -8,4 +8,7 @@
     <string name="dialog_frg__sure">Are you sure?</string>
     <string name="dialog_frg__attention">You will not be able to restore the note</string>
     <string name="dialog_frg__app_close">Are you want to close app?</string>
+    <string name="auth_frg__login_ic">Auth frg icon user</string>
+    <string name="auth_frg__login">Input your email</string>
+    <string name="auth_frg__password">Input your password</string>
 </resources>

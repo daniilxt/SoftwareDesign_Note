@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDeepDark"
+    tools:context=".main.EditorFragment">
+
+    <LinearLayout
+        android:id="@+id/auth_frg__login_wr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_big_30"
+        android:layout_marginBottom="@dimen/spacing_big_30"
+        android:background="@drawable/auth_frg__input_rounded"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/spacing_half_big_15"
+        android:paddingTop="@dimen/spacing_half_big_15"
+        android:paddingBottom="@dimen/spacing_half_big_15"
+        app:layout_constraintBottom_toTopOf="@+id/auth_frg__password_wr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.733"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/auth_frg__login_ic"
+            android:layout_width="@dimen/spacing_mid_20"
+            android:layout_height="@dimen/spacing_mid_20"
+            android:layout_marginEnd="@dimen/spacing_half_big_15"
+            android:contentDescription="@string/auth_frg__login_ic"
+            android:src="@drawable/auth_frg__login_ic" />
+
+        <EditText
+            android:id="@+id/auth_frg__login_tv"
+            style="@style/Text.ManualInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/auth_frg__login"
+            android:inputType="numberSigned" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/auth_frg__password_wr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_big_30"
+        android:background="@drawable/auth_frg__input_rounded"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/spacing_half_big_15"
+        android:paddingTop="@dimen/spacing_half_big_15"
+        android:paddingBottom="@dimen/spacing_half_big_15"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/auth_frg__password_ic"
+            android:layout_width="@dimen/spacing_mid_20"
+            android:layout_height="@dimen/spacing_mid_20"
+            android:layout_marginEnd="@dimen/spacing_half_big_15"
+            android:contentDescription="@string/auth_frg__login_ic"
+            android:src="@drawable/auth_frg__password_ic" />
+
+        <EditText
+            android:id="@+id/auth_frg__password_tv"
+            style="@style/Text.ManualInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/auth_frg__password"
+            android:inputType="textPassword" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/auth_frg__signin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_middle_huge_50"
+        android:layout_marginTop="@dimen/spacing_huge_40"
+        android:background="@drawable/auth_frg__btn_sign_in"
+        android:padding="@dimen/spacing_double_tiny_8"
+        android:text="sign in"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/auth_frg__password_wr" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/auth_frg__register"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_big_30"
+        android:layout_marginTop="@dimen/spacing_big_30"
+        android:layout_marginEnd="@dimen/spacing_half_mid_10"
+        android:background="@drawable/auth_frg__btn_sign"
+        android:padding="@dimen/spacing_double_tiny_8"
+        android:text="register"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/auth_frg__btn_restore"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/auth_frg__signin" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/auth_frg__btn_restore"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_half_mid_10"
+        android:layout_marginTop="@dimen/spacing_big_30"
+        android:layout_marginEnd="@dimen/spacing_big_30"
+        android:background="@drawable/auth_frg__btn_sign"
+        android:text="restore"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/auth_frg__register"
+        app:layout_constraintTop_toBottomOf="@+id/auth_frg__signin" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
