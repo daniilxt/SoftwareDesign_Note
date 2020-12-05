@@ -11,21 +11,45 @@ import java.util.stream.Collectors
 import kotlin.collections.ArrayList
 
 class FirstFragmentViewModel : ViewModel() {
+    enum class Status {
+        LIKED,
+        ARCHIVED,
+        LIST
+    }
+
     private var notes: MutableLiveData<ArrayList<Note>> = MutableLiveData()
+    private var firebaseNotes: MutableLiveData<ArrayList<Note>> = MutableLiveData() //костыль, тут всегда полная копия заметок
     private var tmpNotes = notes.value
+    private var isLiked = false
+    private var isLArchived = false
+    private var event = Status.LIST
 
     init {
         FirebaseDB.initRepository {
             setData(it)
         }
+
     }
 
-    private fun setData(notesList: List<Note>) {
 
-        tmpNotes = notes.value
-        //notes.value = notesList as ArrayList<Note>
-        notes.postValue(notesList as ArrayList<Note>)
-        //notesList.forEach { Timber.i("VIEMO ARR: ${it}") }
+    private fun setData(notesList: List<Note>) {
+        firebaseNotes.postValue(notesList as ArrayList<Note>)
+
+        when (event) {
+            Status.LIST -> {
+                tmpNotes = notes.value
+               // firebaseNotes.postValue(notesList as ArrayList<Note>)
+                val filteredList = notesList.stream().filter { !(it.private || it.archived) }
+                        .collect(Collectors.toList())
+                notes.postValue(filteredList as ArrayList<Note>?)
+            }
+            Status.LIKED -> {
+                filterByLike()
+            }
+            Status.ARCHIVED -> {
+                filterByArchive()
+            }
+        }
     }
 
     fun add(note: Note = Note.createNote()) { //по дефолту генерируется
@@ -38,6 +62,14 @@ class FirstFragmentViewModel : ViewModel() {
     }
 
     fun getNotes(): LiveData<ArrayList<Note>> {
+        //TODO help
+        //сейчас сделано так, чтобы прир null не возникло npe
+        if (notes.value != null && tmpNotes == null) {
+            Timber.i("GGGET ${notes.value}")
+            Timber.i("GGGET ${tmpNotes}")
+            tmpNotes = notes.value
+            list()
+        }
         return notes
     }
 
@@ -63,7 +95,8 @@ class FirstFragmentViewModel : ViewModel() {
     }
 
     fun filterByLike() {
-        val tmp = tmpNotes
+        event = Status.LIKED
+        val tmp = firebaseNotes.value
         if (tmp != null) {
             println(tmp)
             val tmp2 = tmp.stream().filter { it -> it.liked && !(it.private || it.archived) }
@@ -75,16 +108,19 @@ class FirstFragmentViewModel : ViewModel() {
     }
 
     fun filterByArchive() {
-        var tmp = tmpNotes
+        event = Status.ARCHIVED
+        var tmp = firebaseNotes.value
         if (tmp != null) {
             val tmp2 = tmp.stream().filter { it.archived }.collect(Collectors.toList())
             notes.postValue(tmp2 as ArrayList<Note>?)
         }
+
     }
 
     fun list() {
+        event = Status.LIST
         // filter notes without private mode or archive
-        notes.postValue(tmpNotes?.stream()?.filter { !(it.private || it.archived) }
+        notes.postValue(firebaseNotes.value?.stream()?.filter { !(it.private || it.archived) }
                 ?.collect(Collectors.toList()) as ArrayList<Note>)
     }
 
@@ -94,6 +130,11 @@ class FirstFragmentViewModel : ViewModel() {
             FirebaseDB.deleteNote(note.id)
             notes.value?.remove(note)
             tmpNotes?.remove(tmp)
+        }
+    }
+     fun update(){
+        FirebaseDB.update {
+            setData(it)
         }
     }
 }

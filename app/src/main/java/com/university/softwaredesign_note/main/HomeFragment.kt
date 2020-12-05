@@ -147,6 +147,7 @@ class HomeFragment : Fragment() {
                     val note = Note.createNote()
                     CiceroneHelper.router().navigateTo(Screens.EditorScreen(note))
                     viewModel.add(note)
+                    viewModel.list()
                     Toast.makeText(requireContext(), "fab", Toast.LENGTH_SHORT).show()
                 }
             }

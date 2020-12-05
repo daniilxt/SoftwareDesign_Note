@@ -64,4 +64,34 @@ object FirebaseDB : ExtensionsCRUD {
         }
         usersTest.addValueEventListener(notesListener)
     }
+
+    /**
+     * Update
+     *
+     * @param callBack Returned callback param of type MutableList<Note>
+     * @return callback Return class MutableList<Note> with list of notes.
+     */
+//todo del
+
+    fun update(callback: (arr: List<Note>) -> Unit) {
+        usersTest
+                .addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onCancelled(error: DatabaseError) {
+                    }
+
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        val noteUpdateList: MutableList<Note> = mutableListOf()
+                        if (snapshot.exists()) {
+                            val noteList: ArrayList<Note> = arrayListOf()  // очень важный массив, управляет данными
+                            for (item in snapshot.children) {
+                                val tmpItem = item.getValue(Note::class.java)
+                                if (tmpItem != null) {
+                                    noteUpdateList.add(tmpItem)
+                                }
+                            }
+                            callback(noteList)
+                        }
+                    }
+                })
+    }
 }
