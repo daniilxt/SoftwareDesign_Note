@@ -28,8 +28,7 @@ class FirstFragmentViewModel : ViewModel() {
         }
     }
 
-
-    private fun setData(notesList: List<Note>) {
+    fun setData(notesList: List<Note>) {
         firebaseNotes.postValue(notesList as ArrayList<Note>)
 
         when (event) {

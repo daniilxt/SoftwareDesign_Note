@@ -28,6 +28,7 @@ object FirebaseAuthentication {
         auth.createUserWithEmailAndPassword(login, password)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
+
                         Timber.i("CUUR USER is: ${auth.currentUser!!.uid}")
                         FirebaseDB.createUser(auth.currentUser!!.uid)
                         callback()
