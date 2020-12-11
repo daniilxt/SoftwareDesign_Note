@@ -2,15 +2,15 @@ package com.university.softwaredesign_note.main
 
 import android.content.res.ColorStateList
 import android.os.Bundle
-import android.provider.ContactsContract
-import androidx.fragment.app.Fragment
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnFocusChangeListener
 import android.view.ViewGroup
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -19,18 +19,15 @@ import com.university.softwaredesign_note.R
 import com.university.softwaredesign_note.bus.Event
 import com.university.softwaredesign_note.bus.EventBus
 import com.university.softwaredesign_note.extensions.animate
-import com.university.softwaredesign_note.extensions.showChildFragment
-import com.university.softwaredesign_note.firebase_db.FirebaseDB
 import com.university.softwaredesign_note.helper.CiceroneHelper
+import com.university.softwaredesign_note.main.notes.FirstFragmentViewModel
 import com.university.softwaredesign_note.models.DeleteableNote
 import com.university.softwaredesign_note.models.Note
-import com.university.softwaredesign_note.main.notes.FirstFragmentViewModel
-import com.university.softwaredesign_note.main.sheets.ProfileModalBottomSheet
 import com.university.softwaredesign_note.screens.Screens
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_home.*
 import timber.log.Timber
-import java.lang.Exception
+
 
 class HomeFragment : Fragment() {
     companion object {
@@ -55,11 +52,33 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    fun disableSearchEditText() {
+        editor_search__text.isEnabled = false
+        editor_search__text.visibility = View.INVISIBLE
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViewModel()
         initToolbar()
+
+        editor_search__text.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                viewModel.search(editor_search__text.text.toString())
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+        })
+
+        //при добавлении новой заявки пребрасывает на первый фрагмент, неомходи для поиска
+        stateNavigation = R.id.firstFragment
+
+        disableSearchEditText()
+
         Timber.i("ON VIEW CREATED")
         disposable = EventBus.get().subscribe { obj ->
             when (obj) {
@@ -120,26 +139,32 @@ class HomeFragment : Fragment() {
         bottomNavigationView.setOnNavigationItemSelectedListener {
 
             when (it.itemId) {
-
                 R.id.firstFragment -> {
                     Timber.i("GETTTT NOTES")
                     //allow don't run fun twice
                     if (stateNavigation != R.id.firstFragment) {
+                        disableSearchEditText()
                         viewModel.list()
                         stateNavigation = R.id.firstFragment
                     }
                 }
                 R.id.secondFragment -> {
+                        viewModel.search(editor_search__text.text.toString())
+                        editor_search__text.isEnabled = true
+                        editor_search__text.visibility = View.VISIBLE
+                        stateNavigation = R.id.secondFragment
 
                 }
                 R.id.thirdFragment -> {
-                    if (stateNavigation != R.id.secondFragment) {
+                    if (stateNavigation != R.id.thirdFragment) {
+                        disableSearchEditText()
                         viewModel.filterByLike()
-                        stateNavigation = R.id.secondFragment
+                        stateNavigation = R.id.thirdFragment
                     }
                 }
                 R.id.fourthFragment -> {
                     if (stateNavigation != R.id.fourthFragment) {
+                        disableSearchEditText()
                         viewModel.filterByArchive()
                         stateNavigation = R.id.fourthFragment
                     }
@@ -154,6 +179,8 @@ class HomeFragment : Fragment() {
             }
             return@setOnNavigationItemSelectedListener true
         }
+
+        bottomNavigationView.setSelectedItemId(stateNavigation)
         bottomNavigationView.itemRippleColor = csl
     }
 
@@ -179,6 +206,10 @@ class HomeFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        bottomNavigationView.setSelectedItemId(stateNavigation)
+    }
 
     override fun onDestroy() {
         super.onDestroy()

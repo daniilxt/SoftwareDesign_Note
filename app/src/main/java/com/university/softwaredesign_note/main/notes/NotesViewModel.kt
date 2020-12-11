@@ -3,6 +3,7 @@ package com.university.softwaredesign_note.main.notes
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.university.softwaredesign_note.app.App
 import com.university.softwaredesign_note.firebase_db.FirebaseDB
 import com.university.softwaredesign_note.models.Note
 import timber.log.Timber
@@ -67,6 +68,15 @@ class FirstFragmentViewModel : ViewModel() {
             list()
         }
         return notes
+    }
+
+    fun search(line: String) {
+        val tmp = firebaseNotes.value
+        if (tmp != null) {
+            val tmp2 = tmp.stream().filter { line in it.title.toLowerCase(Locale.ROOT) }
+                    .collect(Collectors.toList())
+            notes.postValue(tmp2 as ArrayList<Note>?)
+        }
     }
 
     fun changeLikeState(position: Int) {

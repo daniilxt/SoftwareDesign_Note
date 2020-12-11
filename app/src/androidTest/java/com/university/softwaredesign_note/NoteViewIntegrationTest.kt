@@ -86,6 +86,40 @@ class NoteViewIntegrationTest () {
     }
 
     @Test
+    fun fragment_view_model_search_is_current_test() {
+        val initialNoteArray = notes.value
+        for(i in 0..((initialNoteArray?.size) ?:0 -1)) {
+            viewModel.delete(initialNoteArray!![i])
+        }
+
+        val count = 3
+        var noteArray = ArrayList<Note>()
+        val tittleArray = arrayListOf("tittle1", "middleTittle", "mineTittle")
+        for(i in 0..count-1) {
+            var note = Note.createNote()
+            note.title = tittleArray[i]
+            noteArray.add(note)
+        }
+
+        viewModel.setData(noteArray)
+
+        for(i in 0..count-1) {
+            viewModel.add(noteArray[i])
+        }
+        viewModel.list()
+
+        viewModel.search("mi")
+        viewModel.list()
+
+        assertEquals(noteArray[1], notes.value?.get(0))
+        assertEquals(noteArray[2], notes.value?.get(1))
+
+        for(i in 0..count-1) {
+            viewModel.delete(noteArray.get(i))
+        }
+    }
+
+    @Test
     fun fragment_view_model_change_filter_by_like_is_current_test() {
         test_filter(filterType.LIKE)
     }
@@ -134,8 +168,6 @@ class NoteViewIntegrationTest () {
         for(i in 0..count-1) {
             viewModel.delete(noteArray.get(i))
         }
-
-        assertEquals(notes.value?.size, 0)
     }
 
     enum class filterType{
