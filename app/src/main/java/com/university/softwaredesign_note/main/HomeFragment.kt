@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.university.softwaredesign_note.R
 import com.university.softwaredesign_note.bus.Event
 import com.university.softwaredesign_note.bus.EventBus
@@ -192,7 +193,6 @@ class HomeFragment : Fragment() {
         toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.home_frg__toolbar_user -> {
-                    //todo profile
 /*                    val tmp = 1
                     if (tmp ==1) {
                         showChildFragment(ProfileModalBottomSheet(), BOTTOM_CONTAINER_ID, true)
@@ -200,6 +200,8 @@ class HomeFragment : Fragment() {
                     else {
                         showChildFragment(ProfileModalBottomSheet(), BOTTOM_CONTAINER_ID, true)
                     }*/
+                    val auth = FirebaseAuth.getInstance()
+                    Toast.makeText(requireContext(), auth.currentUser?.email, Toast.LENGTH_LONG).show()
                 }
             }
             false
