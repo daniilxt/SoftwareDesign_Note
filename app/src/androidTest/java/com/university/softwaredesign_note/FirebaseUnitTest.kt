@@ -108,7 +108,7 @@ class FirebaseUnitTest {
     }
 
     @Test
-    fun firebase_note_count_after_change_is_correct_test() {
+    fun firebase_delete_note_is_correct_test() {
         val count = 3
         val noteArray = ArrayList<Note>()
         for(i in 0..count-1) {
