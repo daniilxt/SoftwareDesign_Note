@@ -10,9 +10,9 @@
 
 # Разработка архитектуры и детальное проектирование
 <br />1)	Контекстная диаграмма
-<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/tree/master/img/contextDiag.jpg)
+<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/blob/master/img/contextDiag.jpg)
 <br />2)	Контейнерная диаграмма
-<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/tree/master/img/containerDiag.jpg)
+<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/blob/master/img/containerDiag.jpg)
 
 # Кодирование и отладка
 <br />Проект представляет собой Android приложение, реализованное на языке kotlin с использованием nosql базы данных реального времени Firebase.
@@ -32,16 +32,16 @@
 # Сборка проекта
 <br />Для сборки, выполнения тестов, интеграционных тестов и запуска приложения необходимо выполнить следующею команду в терминале в директории с проектом.
 <br />gradlew test app:connectedAndroidTest installDebug
-<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/tree/master/img/build.jpg)
+<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/blob/master/img/build.jpg)
 
 # Скриншоты работы приложения
 <br /> 1)	Окно авторизации и регистрации
-<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/tree/master/img/auth.jpg)
+<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/blob/master/img/auth.jpg)
 <br /> 2)	Главное окно, в котором отображены все существующие заявки 
-<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/tree/master/img/main.jpg)
+<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/blob/master/img/main.jpg)
 <br /> 3)	Окно редактирования заметок и добавления новых
-<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/tree/master/img/edit.jpg)
+<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/blob/master/img/edit.jpg)
 <br /> 4)	Окно избранных заметок
-<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/tree/master/img/liked.jpg)
+<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/blob/master/img/liked.jpg)
 <br /> 5)	Окно поиска
-<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/tree/master/img/search.jpg)
+<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/blob/master/img/search.jpg)
