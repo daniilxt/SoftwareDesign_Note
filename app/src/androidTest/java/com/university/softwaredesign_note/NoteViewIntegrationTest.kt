@@ -52,7 +52,7 @@ class NoteViewIntegrationTest () {
     }
 
     @Test
-    fun fragment_view_model_addNote_test() {
+    fun fragment_view_model_add_Note_is_current_test() {
         val note = Note.createNote()
         assertEquals(auth.getEmail(), "testunit@ya.ru")
 
@@ -120,13 +120,33 @@ class NoteViewIntegrationTest () {
     }
 
     @Test
-    fun fragment_view_model_change_filter_by_like_is_current_test() {
-        test_filter(filterType.LIKE)
-    }
+    fun fragment_view_model_filter_by_like_is_current_test() {
+        val initialNoteArray = notes.value
+        for(i in 0..((initialNoteArray?.size) ?:0 -1)) {
+            viewModel.delete(initialNoteArray!![i])
+        }
 
-    @Test
-    fun fragment_view_model_change_filter_by_archieve_is_current_test() {
-        test_filter(filterType.ARCHIVE)
+        val count = 3
+        var noteArray = arrayListOf(Note.createNote(), Note.createNote(), Note.createNote())
+        viewModel.setData(noteArray)
+
+        for(i in 0..count-1) {
+            viewModel.add(noteArray[i])
+        }
+        viewModel.list()
+
+        viewModel.changeLikeState(2)
+        viewModel.list()
+        val likedTrueNote = notes.value?.get(2)
+        viewModel.filterByLike()
+        viewModel.list()
+
+        assertEquals(true, notes.value?.get(0)?.liked)
+        assertEquals(likedTrueNote, notes.value?.get(0))
+
+        for(i in 0..count-1) {
+            viewModel.delete(noteArray.get(i))
+        }
     }
 
     fun test_filter(type : filterType) {
@@ -153,16 +173,6 @@ class NoteViewIntegrationTest () {
 
             assertEquals(true, notes.value?.get(0)?.liked)
             assertEquals(likedTrueNote, notes.value?.get(0))
-        } else if (type == filterType.ARCHIVE) {
-            notes.value?.get(2)?.archived = true
-            viewModel.list()
-
-            val archiveTrueNote = notes.value?.get(2)
-            viewModel.filterByArchive()
-            viewModel.list()
-
-            assertEquals(true, notes.value?.get(0)?.archived)
-            assertEquals(archiveTrueNote, notes.value?.get(0))
         }
 
         for(i in 0..count-1) {
@@ -171,7 +181,6 @@ class NoteViewIntegrationTest () {
     }
 
     enum class filterType{
-        LIKE,
-        ARCHIVE
+        LIKE
     }
 }
