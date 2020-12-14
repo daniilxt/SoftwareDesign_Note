@@ -1,5 +1,5 @@
 # Заметки
-<br /> Группа 3530904/80103 <br /> Над проектом работали: Фирсов, Коршунов, Королев
+<br /> Группа 3530904/80103 <br /> Над проектом работали: Фирсов Ф.А, Коршунов К.В, Королев
 # Проблема
 <br /> Данное приложение решает проблему структурирования заметок.
 
@@ -10,9 +10,9 @@
 
 # Разработка архитектуры и детальное проектирование
 <br />1)	Контекстная диаграмма
-<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/img/contextDiag.png)
+<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/img/contextDiag.jpg)
 <br />2)	Контейнерная диаграмма
-<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/img/containerDiag.png)
+<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/img/containerDiag.jpg)
 
 # Кодирование и отладка
 <br />Проект представляет собой Android приложение, реализованное на языке kotlin с использованием nosql базы данных реального времени Firebase.
@@ -32,16 +32,16 @@
 # Сборка проекта
 <br />Для сборки, выполнения тестов, интеграционных тестов и запуска приложения необходимо выполнить следующею команду в терминале в директории с проектом.
 <br />gradlew test app:connectedAndroidTest installDebug
-<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/img/build.png)
+<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/img/build.jpg)
 
 # Скриншоты работы приложения
 <br /> 1)	Окно авторизации и регистрации
-<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/img/auth.png)
+<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/img/auth.jpg)
 <br /> 2)	Главное окно, в котором отображены все существующие заявки 
-<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/img/main.png)
+<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/img/main.jpg)
 <br /> 3)	Окно редактирования заметок и добавления новых
-<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/img/edit.png)
+<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/img/edit.jpg)
 <br /> 4)	Окно избранных заметок
-<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/img/liked.png)
+<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/img/liked.jpg)
 <br /> 5)	Окно поиска
-<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/img/search.png)
+<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/img/search.jpg)
