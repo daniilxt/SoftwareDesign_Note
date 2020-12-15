@@ -19,15 +19,15 @@
 
 # Unit тестирование
 <br />Было реализовано Unit тестирование авторизации и регистрации новых пользователей в облачной базе данных Firebase. Тестирование было проведено с помощью фреймворка автоматического тестирования JUnit.
-<br />Данные тесты представлены в файле SoftwareDesign_Note/tree/master/app/src/androidTest/java/com/university/softwaredesign_note/FirebaseAuthUnitTest.kt
-
+<br />Данные тесты представлены в файле<a href="https://github.com/daniilxt/SoftwareDesign_Note/tree/master/app/src/androidTest/java/com/university/softwaredesign_note/FirebaseAuthUnitTest.kt">FirebaseAuthUnitTest.kt</a>
+  
 # Интеграционное тестирование
 <br />Реализованы интеграционные тесты, которые покрывают следующие пользовательские сценарии:
 <br />1)	Добавление и удаление заметки (fragment_view_model_add_Note_is_current_test)
 <br />2)	Изменение статуса “в избранных” заметки (fragment_view_model_change_like_status_is_current_test)
 <br />3)	Поиск заметок по заглавию (fragment_view_model_search_is_current_test)
 <br />4)	Сортировка заявок по статусу “в избранных” (fragment_view_model_filter_by_like_is_current_test)
-<br />Данные тесты представлены в файле SoftwareDesign_Note/tree/master/app/src/androidTest/java/com/university/softwaredesign_note/NoteViewIntegrationTest.kt
+<br />Данные тесты представлены в файле<a href="https://github.com/daniilxt/SoftwareDesign_Note/tree/master/app/src/androidTest/java/com/university/softwaredesign_note/NoteViewIntegrationTest.kt">NoteViewIntegrationTest.kt</a>
 
 # Сборка проекта
 <br />Для сборки, выполнения тестов, интеграционных тестов и запуска приложения необходимо выполнить следующею команду в терминале в директории с проектом.
@@ -36,12 +36,17 @@
 
 # Скриншоты работы приложения
 <br /> 1)	Окно авторизации и регистрации
-<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/blob/master/img/auth.jpg)
+<br /><img src="https://github.com/daniilxt/SoftwareDesign_Note/blob/master/img/auth.jpg" 
+  width="480" height="960">
 <br /> 2)	Главное окно, в котором отображены все существующие заявки 
-<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/blob/master/img/main.jpg)
+<br /><img src="https://github.com/daniilxt/SoftwareDesign_Note/blob/master/img/main.jpg" 
+  width="480" height="960">
 <br /> 3)	Окно редактирования заметок и добавления новых
-<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/blob/master/img/edit.jpg)
+<br /><img src="https://github.com/daniilxt/SoftwareDesign_Note/blob/master/img/edit.jpg" 
+  width="480" height="960">
 <br /> 4)	Окно избранных заметок
-<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/blob/master/img/liked.jpg)
+<br /><img src="https://github.com/daniilxt/SoftwareDesign_Note/blob/master/img/liked.jpg" 
+  width="480" height="960">
 <br /> 5)	Окно поиска
-<br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/blob/master/img/search.jpg)
+<br /><img src="https://github.com/daniilxt/SoftwareDesign_Note/blob/master/img/search.jpg" 
+  width="480" height="960">
