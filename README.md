@@ -30,7 +30,7 @@
 <br />Данные тесты представлены в файле<a href="https://github.com/daniilxt/SoftwareDesign_Note/tree/master/app/src/androidTest/java/com/university/softwaredesign_note/NoteViewIntegrationTest.kt">NoteViewIntegrationTest.kt</a>
 
 # Сборка проекта
-<br />Для сборки, выполнения тестов, интеграционных тестов и запуска приложения необходимо выполнить следующею команду в терминале в директории с проектом.
+<br />Для сборки, выполнения тестов, интеграционных тестов и запуска приложения необходимо выполнить следующую команду в терминале в директории с проектом.
 <br />gradlew test app:connectedAndroidTest installDebug
 <br /> ![Image alt](https://github.com/daniilxt/SoftwareDesign_Note/blob/master/img/build.jpg)
 
